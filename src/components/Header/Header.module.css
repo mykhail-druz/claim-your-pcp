@@ -1,0 +1,19 @@
+.header {
+    @apply px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-28 mt-4 ;
+}
+
+.header__container {
+    @apply w-full p-3 bg-beige flex justify-between rounded-[24px] border-2 border-secondary items-center;
+}
+
+.nav {
+    @apply flex space-x-4 items-center;
+}
+
+.a {
+    @apply hidden sm:block font-light;
+}
+
+.nav__button {
+    @apply font-medium bg-primary text-white rounded-[24px] p-2;
+}

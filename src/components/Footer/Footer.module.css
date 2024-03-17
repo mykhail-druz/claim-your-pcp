@@ -1,0 +1,21 @@
+.footer {
+  @apply px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-28 mb-8;
+}
+
+.footer__container {
+  @apply font-light flex flex-col items-center justify-center rounded-[24px] pt-8 pb-4 px-4 sm:px-12 md:px-16 lg:px-32 xl:px-48 2xl:px-64 space-y-8;
+  background: linear-gradient(180deg, #5db7de 0%, #ffffff 55%);
+}
+
+.footer__p {
+  @apply text-center;
+}
+
+.privacy {
+  @apply text-[24px] font-semibold underline;
+}
+
+.footer__a {
+  @apply flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 space-x-0 md:space-x-8 text-[18px] font-medium;
+
+}
