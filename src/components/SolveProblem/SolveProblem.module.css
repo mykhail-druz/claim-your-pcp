@@ -1,0 +1,37 @@
+.title{
+    @apply lg:text-[56px] text-[28px] font-bold text-center
+}
+.description{
+    @apply text-grey-title text-[18px] text-center
+}
+.after{
+    @apply relative;
+}
+.after::after{
+    content: "";
+    width: 28px;
+    left: 6px;
+    bottom: 1px;
+    height: 1px;
+    @apply bg-grey-title absolute text-grey-title;
+}
+.button__block{
+    @apply mx-auto px-[2px] py-[12px] rounded-3xl lg:mt-8 mt-4;
+    background:  linear-gradient(97.16deg, #E8DE00 0%, #5DB7DE 100%);
+}
+.button{
+    @apply bg-primary px-6 py-3 rounded-3xl text-white font-semibold hover:bg-transparent duration-500
+}
+.section{
+    @apply flex flex-col
+}
+
+.cardBg{
+    @apply py-6 px-3 rounded-3xl lg:w-[30%] w-[95%] lg:max-w-[450px];
+}
+.card__title{
+    @apply text-[48px] font-bold
+}
+.card__block{
+    @apply flex lg:flex-row flex-col lg:space-x-4 justify-center py-16
+}

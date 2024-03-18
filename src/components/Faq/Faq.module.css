@@ -1,0 +1,72 @@
+.section {
+  @apply bg-black lg:px-24 px-8 py-8 lg:py-16 rounded-3xl text-white;
+}
+.title {
+  @apply text-light-yellow font-bold text-[20px] md:text-[32px] lg:text-[56px] text-center;
+}
+.title__footer {
+  @apply text-light-yellow font-bold text-[20px] md:text-[32px] lg:text-[56px];
+}
+.footer__block {
+  @apply flex md:flex-row flex-col lg:space-y-0 space-y-8 justify-between items-end;
+}
+.first__footerblock {
+  @apply space-y-2;
+}
+.second__footerblock{
+    @apply mt-auto
+}
+.description_firstblock{
+    @apply lg:w-[54%]
+}
+
+.card {
+  @apply  my-4 cursor-pointer p-4 lg:p-8 bg-[#242425] rounded-[14px];
+}
+
+.card_title__container {
+  @apply flex justify-between items-center my-auto;
+}
+
+.title_open {
+  @apply text-white text-[16px] md:text-[24px] w-[80%] md:w-full font-bold;
+  transition: transform 0.5s ease-out, color 0.5s ease-out;
+}
+
+.title_closed {
+  @apply text-white text-[16px] md:text-[24px] w-[80%] md:w-full;
+  transition: transform 0.5s ease-out, color 0.5s ease-out;
+}
+
+.card_desc {
+  @apply text-white text-[18px] font-light ;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-out, opacity 1s ease-out;
+}
+
+.open {
+  @apply text-white text-[18px] font-light;
+  max-height: 600px;
+  opacity: 1;
+  transition: max-height 0.5s ease-out, opacity 1s ease-out;
+}
+
+.arrow_closed {
+  @apply text-secondary;
+  transform: rotate(0deg);
+  transition: transform 0.5s ease-out, color 0.5s ease-out;
+}
+
+.arrow_open {
+  color: #242425;
+  transform: rotate(90deg);
+  transition: transform 0.5s ease-out, color 0.5s ease-out;
+}
+.arrow_container_open {
+  @apply rounded-full duration-300 bg-secondary px-4 py-3 flex justify-center items-center;
+}
+.arrow_container_closed {
+  @apply rounded-full duration-300 bg-transparent px-4 py-3 flex justify-center items-center;
+}

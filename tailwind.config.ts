@@ -14,7 +14,10 @@ const config: Config = {
         secondary: "#5DB7DE",
         yellow: "#E8DE00",
         beige: "#FFFCBF",
-      }
+        grey: "#A39B8B",
+        "grey-title": "#514D55",
+        "light-yellow": "#FFFCBF",
+      },
     },
   },
   plugins: [],

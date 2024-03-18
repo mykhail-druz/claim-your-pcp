@@ -1,0 +1,24 @@
+.section{
+    @apply bg-[#F1E9DB] w-full 
+    rounded-3xl py-8 px-4 lg:px-8 lg:py-16 
+    flex lg:flex-row flex-col justify-between
+    my-8;
+}
+.text__block{
+    @apply flex flex-col items-start space-y-4 lg:mb-0 mb-8
+}
+.subtitle{
+    @apply bg-yellow rounded-3xl py-[4px] px-[24px]
+}
+.title{
+    @apply text-black lg:text-[48px] md:text-[36px] text-[24px] font-bold
+}
+.description{
+    @apply text-grey lg:w-[45%] lg:pb-12
+}
+.button{
+    @apply border border-black px-6 py-1
+     rounded-3xl text-[18px]
+     hover:text-white bg-transparent
+      hover:bg-black duration-500;
+}

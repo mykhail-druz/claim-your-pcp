@@ -1,0 +1,10 @@
+.images__block{
+    @apply flex flex-wrap w-full lg:justify-between justify-center
+}
+
+.title{
+    @apply lg:text-[56px] text-[48px] text-grey-title font-bold text-center mb-4
+}
+.section{
+    @apply py-8
+}

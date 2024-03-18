@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 
 export const roobertLight = localFont({
   src: "./RoobertLight.ttf",
-  weight: "500"
+  weight: "300"
 });
 
 export const roobert = localFont({
