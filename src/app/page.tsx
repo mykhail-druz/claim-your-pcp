@@ -1,10 +1,10 @@
-import { Faq, GetAdvice, Featured, SolveProblem, Scandal } from "@/components";
+import { Faq, HeroBanner, GetAdvice, Featured, SolveProblem, Scandal, YouCould } from "@/components";
 import { Layout } from "@/layout";
-
 export default function Home() {
   return (
     <Layout>
-      <section>Hero Banner</section>
+      <HeroBanner />
+      <YouCould />
       <Scandal />
       <SolveProblem />
       <Featured />

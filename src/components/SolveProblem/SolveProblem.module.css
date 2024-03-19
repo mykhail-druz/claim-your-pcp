@@ -23,7 +23,7 @@
     @apply bg-primary px-6 py-3 rounded-3xl text-white font-semibold hover:bg-transparent duration-500
 }
 .section{
-    @apply flex flex-col
+    @apply flex flex-col;
 }
 
 .cardBg{

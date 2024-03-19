@@ -1,0 +1,38 @@
+.section{
+    @apply z-30 relative bg-secondary px-6 py-4 flex lg:flex-row flex-col lg:space-y-0 space-y-16 text-center lg:text-left justify-between rounded-3xl
+}
+.title{
+    @apply text-black lg:text-[48px] text-[32px];
+    line-height: 45px;
+}
+.button{
+    @apply border border-black rounded-3xl py-3 px-6 hover:bg-black hover:text-white duration-500
+}
+.check__item__text{
+    @apply  text-[16px] text-black;
+}
+.check__item{
+    @apply flex items-center space-x-1;
+}
+.list {
+    display: grid;
+    grid-template-columns: 300px auto;
+    gap: 16px;
+}
+@media (max-width:568px) {
+   .list {
+    display: grid;
+    grid-template-columns: 300px ;
+    gap: 16px;
+} 
+}
+
+.left__block{
+    @apply lg:w-[40%] flex flex-col space-y-8 justify-center;
+}
+.text__block{
+    @apply flex flex-col space-y-2;
+}
+.subtitle{
+    @apply bg-yellow rounded-3xl py-[4px] px-[24px] lg:w-[33%] text-center;
+}
