@@ -1,0 +1,53 @@
+.section {
+  @apply w-full flex items-center justify-center my-8 sm:my-16 md:my-20 lg:my-28 xl:my-32 2xl:my-32;
+}
+
+.container {
+  @apply flex flex-col xl:w-[75%] 2xl:w-[50%] space-y-2;
+}
+
+.h2 {
+  @apply text-[30px] sm:text-[32px] mb-8 w-full sm:w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%] 2xl:w-[70%] mx-auto text-center;
+  line-height: 28px;
+}
+
+.registration {
+  @apply px-8 py-8 space-y-4 rounded-[24px] bg-white border border-[#EAC885];
+}
+
+.input_container {
+  @apply flex space-x-2 px-2 items-center bg-[#EDDFC3] border border-black rounded-[24px];
+}
+
+.input {
+  @apply bg-transparent placeholder:text-[#514D55] py-5 outline-none w-full;
+  color: black;
+}
+
+.input_button {
+  @apply hidden md:block bg-black rounded-[24px] text-white py-4 px-6;
+}
+
+.mobile_button {
+  @apply flex md:hidden bg-black rounded-[24px] text-white py-4 px-6 w-full justify-center;
+}
+
+.reg_vehicle {
+  @apply cursor-pointer text-[14px] text-[#514D55];
+}
+
+.skip {
+  @apply text-[#FF0000] underline pt-4 cursor-pointer;
+}
+
+.desc_container {
+  @apply flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-2 justify-center;
+}
+
+.desc_first {
+  @apply w-full md:w-[50%] bg-[#E5F7FF] border border-[#5DB7DE] rounded-[24px] px-2 py-8 flex items-center justify-center;
+}
+
+.desc_second {
+  @apply w-full md:w-[50%] bg-[#EDDFC3] border border-[#5DB7DE] rounded-[24px] px-2 py-8 flex items-center justify-center;
+}

@@ -5,3 +5,5 @@ export * from './Faq'
 export * from "./Featured";
 export * from './SolveProblem';
 export * from './Scandal'
+export * from "./VehicleRegistration"
+export * from "./ContactInformation"
