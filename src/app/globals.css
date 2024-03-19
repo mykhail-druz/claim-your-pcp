@@ -4,4 +4,9 @@
 
 .body {
     font-family: 'Roobert', sans-serif;
+   
+  }
+  html{
+ overflow-x: hidden;
+ 
   }
