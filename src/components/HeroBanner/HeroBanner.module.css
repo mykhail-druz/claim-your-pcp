@@ -1,34 +1,36 @@
-.button__block{
-    @apply mx-auto px-[2px] py-[12px] rounded-3xl lg:mt-8 mt-4;
-    background:  linear-gradient(97.16deg, #E8DE00 0%, #5DB7DE 100%);
+.button__block {
+  @apply mx-auto px-[2px] py-[12px] rounded-3xl lg:mt-8 mt-4;
+  background: linear-gradient(97.16deg, #e8de00 0%, #5db7de 100%);
 }
-.button{
-    @apply bg-primary px-6 py-3 rounded-3xl text-white font-semibold hover:bg-transparent duration-500
+.button {
+  @apply bg-primary px-6 py-3 rounded-3xl text-white font-semibold hover:bg-transparent duration-500;
 }
-.img{
-    max-width: 100%; /* This ensures the image is never wider than its container */
-    height: auto; /* This keeps the image aspect ratio intact */
-    @apply translate-x-[18%];
-}
-.section{
-    height: auto; /* Changed from a fixed height to auto to accommodate the content */
-    min-height: 800px; /* You can set a minimum height if needed */
-    position: relative;
-}
-.title{
-    @apply text-[44px] lg:text-[80px] text-center
-}
-.desc{
-    @apply text-[16px] mx-auto text-center
-}
-.text__block{
-    @apply flex flex-col;
-}
-.car__block{
 
-    width: 100%;
-    margin: 0 auto; 
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+.section {
+  height: auto; /* Changed from a fixed height to auto to accommodate the content */
+  min-height: 800px; /* You can set a minimum height if needed */
+  position: relative;
+}
+.title {
+  @apply text-[44px] lg:text-[80px] text-center;
+}
+.desc {
+  @apply text-[16px] mx-auto text-center;
+}
+.text__block {
+  @apply flex flex-col;
+}
+.car__block {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   /* Это свойство обрежет части изображения, выходящие за пределы контейнера */
+}
+
+.img {
+  max-width: 100%; /* This ensures the image is never wider than its container */
+  height: auto; /* This keeps the image aspect ratio intact */
+  @apply translate-x-[18%];
 }
