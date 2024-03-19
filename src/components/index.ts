@@ -8,3 +8,5 @@ export * from './Scandal'
 export * from "./VehicleRegistration"
 export * from './YouCould'
 export * from './HeroBanner'
+export * from './YouCould'
+export * from './HeroBanner'
