@@ -7,12 +7,14 @@
 }
 
 .section {
-  height: auto; /* Changed from a fixed height to auto to accommodate the content */
-  min-height: 800px; /* You can set a minimum height if needed */
+  @apply pt-8;
+  height: auto;
+  min-height: 800px;
   position: relative;
 }
 .title {
   @apply text-[44px] lg:text-[80px] text-center;
+  line-height: 80px;
 }
 .desc {
   @apply text-[16px] mx-auto text-center;
@@ -26,11 +28,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-   /* Это свойство обрежет части изображения, выходящие за пределы контейнера */
 }
 
 .img {
-  max-width: 100%; /* This ensures the image is never wider than its container */
-  height: auto; /* This keeps the image aspect ratio intact */
+  max-width: 100%;
+  height: auto;
   @apply translate-x-[18%];
 }

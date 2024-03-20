@@ -14,10 +14,12 @@ export const Card: React.FC<CardProps> = ({ title, description }) => {
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div className={`${styles.card}`} onClick={toggleOpen}>
+    <div className={`${styles.card}`} onClick={toggleOpen} data-aos="fade-down">
       <div className={styles.card_title__container}>
         <h3
-          className={`${isOpen ? styles.title_open : styles.title_closed} ${roobertBold.className}
+          className={`${isOpen ? styles.title_open : styles.title_closed} ${
+            roobertBold.className
+          }
                        `}
         >
           {title}
