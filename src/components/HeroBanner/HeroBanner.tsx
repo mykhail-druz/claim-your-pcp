@@ -76,7 +76,15 @@ export const HeroBanner = () => {
           <p>Entirely Online</p>
         </div>
       </div>
-      <Image className="hidden md:block absolute right-0 bottom-16" src="/images/trustpilot.webp" width={225} height={200} alt="Trustpilot"/>
+      <Image
+        data-aos="fade-left"
+        data-aos-duration="2200"
+        className="hidden md:block absolute right-0 bottom-16"
+        src="/images/trustpilot.webp"
+        width={225}
+        height={200}
+        alt="Trustpilot"
+      />
     </section>
   );
 };

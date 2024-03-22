@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import styles from "./Scandal.module.css";
 import { roobertBold } from "@/fonts/fonts";
+
 export const Scandal = () => {
   return (
     <section className={styles.section}>
@@ -16,9 +18,8 @@ export const Scandal = () => {
         data-aos="fade-down"
         data-aos-duration="1000"
       >
-        Millions have already claimed their compensation on mis-sold PPI
-        don&apos;t miss your chance to claim your compensation for mis-sold car
-        finance
+        Millions have already claimed their compensation on mis-sold PPI don't
+        miss your chance to claim your compensation for mis-sold car finance
       </p>
       <div>
         <a

@@ -2,6 +2,7 @@
     @apply w-full h-[450px] my-4 bg-no-repeat bg-cover rounded-3xl justify-center px-4 flex flex-col text-white space-y-8;
     background-image: url('/images/scandal/scandal.png');
 }
+
 .title{
     @apply lg:text-[48px] text-[36px]
 }
