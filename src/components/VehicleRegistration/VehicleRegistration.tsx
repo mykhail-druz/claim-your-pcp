@@ -15,14 +15,24 @@ import { ContactInformation } from "./ContactInformation";
 
 export const VehicleRegistration = () => {
 const [currentStep, setCurrentStep] = useState(0)
+  const [animationClass, setAnimationClass] = useState("fade-in");
 
-const nextStep = () => {
-  setCurrentStep(currentStep + 1)
-  console.log('====================================');
-  console.log(currentStep);
-  console.log('====================================');
- 
-}
+  const nextStep = () => {
+    setAnimationClass("fade-out");
+
+    setTimeout(() => {
+      setCurrentStep(currentStep + 1);
+      setAnimationClass("fade-in");
+    }, 500);
+  };
+  const backStep = () => {
+    setAnimationClass("fade-out");
+
+    setTimeout(() => {
+      setCurrentStep(currentStep - 1);
+      setAnimationClass("fade-in");
+    }, 500);
+  };
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -31,11 +41,12 @@ const nextStep = () => {
         </h2>
         <form action="">
         
-          {currentStep === 0 && (<FirstStepSearch />)
-          }
-          {currentStep === 1 && (<ContactInformation />)
-          }
-          <a  onClick={() => nextStep()}>next step</a>
+          <div className={animationClass}>
+            {currentStep === 0 && <FirstStepSearch />}
+            {currentStep === 1 && <ContactInformation />}
+          </div>
+          <button type="button" onClick={nextStep}>Next Step</button>
+          {currentStep !== 0 && <button type="button" onClick={backStep}>Back Step</button>}
         </form>
         <div className={styles.desc_container}>
           <div className={`${styles.desc_first} ${roobertLight.className}`}>
