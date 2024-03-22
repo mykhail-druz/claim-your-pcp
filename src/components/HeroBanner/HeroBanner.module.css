@@ -31,7 +31,27 @@
 }
 
 .img {
+  @apply absolute top-9;
   max-width: 100%;
   height: auto;
   @apply translate-x-[18%];
+}
+
+.icons_container {
+  @apply flex-col h-1/2 w-full 2xl:w-1/2 mx-auto;
+}
+
+.magnet {
+  @apply flex items-center space-x-2 bg-white rounded-[24px] text-[#514D55] ml-[5%] md:ml-[10%] lg:ml-[20%] xl:ml-[20%] 2xl:ml-[10%] mt-44 px-3 py-1 w-full;
+  max-width: max-content;
+}
+
+.champ {
+  @apply flex items-center space-x-2 bg-white rounded-[24px] text-[#514D55] ml-[50%] md:ml-[60%] lg:ml-[60%] xl:ml-[60%] 2xl:ml-[60%] mt-20 px-3 py-1 w-full;
+  max-width: max-content;
+}
+
+.wifi {
+  @apply flex items-center space-x-2 bg-white rounded-[24px] text-[#514D55] ml-[10%] md:ml-[20%] lg:ml-[25%] xl:ml-[25%] 2xl:ml-[15%] mt-16 px-3 py-1 w-full;
+  max-width: max-content;
 }

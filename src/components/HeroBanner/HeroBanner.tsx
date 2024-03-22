@@ -1,6 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./HeroBanner.module.css";
 import { roobertBold, roobertLight, roobertSemiBold } from "@/fonts/fonts";
+import Magnet from "@/icons/magnet.svg";
+import Champ from "@/icons/champ.svg";
+import Wifi from "@/icons/wifi.svg";
+
 export const HeroBanner = () => {
   return (
     <section className={styles.section}>
@@ -45,6 +50,33 @@ export const HeroBanner = () => {
           alt="Car"
         />
       </div>
+      <div className={styles.icons_container}>
+        <div
+          className={`${styles.magnet} ${roobertSemiBold.className}`}
+          data-aos="fade-right"
+          data-aos-duration="1600"
+        >
+          <Magnet />
+          <p>Easy Claim Process</p>
+        </div>
+        <div
+          className={`${styles.champ} ${roobertSemiBold.className}`}
+          data-aos="fade-left"
+          data-aos-duration="1800"
+        >
+          <Champ />
+          <p>No Win, No Fee</p>
+        </div>
+        <div
+          className={`${styles.wifi} ${roobertSemiBold.className}`}
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
+          <Wifi />
+          <p>Entirely Online</p>
+        </div>
+      </div>
+      <Image className="hidden md:block absolute right-0 bottom-16" src="/images/trustpilot.webp" width={225} height={200} alt="Trustpilot"/>
     </section>
   );
 };
