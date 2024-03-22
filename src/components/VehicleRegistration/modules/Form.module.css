@@ -55,3 +55,12 @@
   @apply flex space-x-2 items-center mb-4 text-black cursor-pointer;
   text-decoration: none;
 }
+.thakyou{
+  @apply px-4 py-8 border border-[#159700] bg-[#ECFFE9] rounded-3xl
+} 
+.yourCar{
+  @apply text-center text-black text-[24px]
+}
+.red{
+  @apply text-red-600 uppercase
+}

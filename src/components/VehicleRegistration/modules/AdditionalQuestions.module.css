@@ -1,0 +1,41 @@
+.input__title {
+  @apply text-[18px];
+  line-height: 19px;
+}
+
+.input__desc {
+  @apply text-grey-form text-[16px];
+  line-height: 19px;
+}
+.registration {
+  @apply px-8 py-8 space-y-4 rounded-[24px] bg-white border border-[#EAC885];
+}
+.question__list{
+    @apply w-[70%] flex-col flex space-y-2
+}
+.questionCard{
+    @apply flex cursor-pointer border-2 items-center space-x-1 border-secondary p-4 w-[100px] h-[50px] rounded-2xl
+}
+.circleInActive{
+     width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    @apply border-2 border-secondary
+}
+.circleActive{
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    @apply border-2 border-secondary bg-secondary
+}
+.question__container{
+    @apply flex space-x-2
+}
+.question__item{
+    @apply space-y-2
+}
+.button__text {
+  @apply text-[20px] text-center justify-center items-center mx-auto space-x-2 rounded-3xl w-full bg-grey-form text-white flex py-3 border border-grey-form hover:bg-transparent duration-500 hover:text-black;
+  line-height: 26px;
+  cursor: pointer;
+}
