@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply flex flex-col mx-auto;
   max-width: 1920px;
@@ -45,13 +49,21 @@ body {
   background-color: #4caf50;
 }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .fade-in {
@@ -60,11 +72,4 @@ body {
 
 .fade-out {
   animation: fadeOut 0.5s ease-in-out;
-}
-html > a:hover{
-  text-decoration:double
-}
-a {
-  text-decoration: none;
-  color: black;
 }

@@ -5,7 +5,7 @@ import { Card } from "./Card";
 
 export const Faq = () => {
   return (
-    <section className={styles.section}>
+    <section id="FAQ" className={styles.section}>
       <h1
         className={`${styles.title} ${roobertBold.className}`}
         data-aos="fade-down"

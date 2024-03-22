@@ -5,7 +5,7 @@ import { Card } from "./Card";
 
 export const SolveProblem = () => {
   return (
-    <section className={styles.section}>
+    <section id="figures" className={styles.section}>
       <h1
         className={`${styles.title} ${roobertBold.className}`}
         data-aos="fade-down"

@@ -6,7 +6,7 @@ import CheckCircle from "@/icons/check-circle.svg";
 
 export const YouCould = () => {
   return (
-    <section className={styles.section}>
+    <section id="scandal" className={styles.section}>
       <div className={styles.left__block}>
         <div className={styles.text__block}>
           <p
