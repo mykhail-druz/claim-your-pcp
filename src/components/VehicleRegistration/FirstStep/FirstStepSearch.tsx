@@ -1,10 +1,12 @@
 import React from 'react'
 import Search from "@/icons/search.svg"; 
-import styles from "./VehicleRegistration.module.css";
+import styles from '../modules/Form.module.css'
 import { roobertBold, roobertLight, roobertMedium } from '@/fonts/fonts';
 import { useEffect, useState } from "react";
+import { RegisterProps } from '../interface';
 
-export const FirstStepSearch = () => {
+
+export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const toggleCheckbox = () => {
@@ -30,8 +32,10 @@ export const FirstStepSearch = () => {
                   type="text"
                   className={`${styles.input} ${roobertMedium.className}`}
                   placeholder="Enter vehicle registration number"
+                  {...register("numberCar")}
               />
               <button
+                  onClick={() => nextStep()}
                   className={`${styles.input_button} ${roobertMedium.className}`}
               >
                   Search

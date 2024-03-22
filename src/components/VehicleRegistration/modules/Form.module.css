@@ -1,5 +1,5 @@
 .section {
-  @apply w-full flex items-center justify-center my-8 sm:my-16 md:my-20 lg:my-28 xl:my-32 2xl:my-32;
+  @apply w-full flex min-h-[600px] items-center justify-center my-8 sm:my-16 md:my-20 lg:my-28 xl:my-32 2xl:my-32;
 }
 
 .container {
@@ -50,4 +50,8 @@
 
 .desc_second {
   @apply w-full md:w-[50%] bg-[#EDDFC3] border border-[#5DB7DE] rounded-[24px] px-2 py-8 flex items-center justify-center;
+}
+.back{
+  @apply flex space-x-2 items-center mb-4 text-black cursor-pointer;
+  text-decoration: none;
 }

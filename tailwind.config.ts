@@ -17,6 +17,7 @@ const config: Config = {
         grey: "#A39B8B",
         "grey-title": "#514D55",
         "light-yellow": "#FFFCBF",
+        "grey-form": "#716A5C",
       },
     },
   },

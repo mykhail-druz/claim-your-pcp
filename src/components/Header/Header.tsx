@@ -23,7 +23,7 @@ export const Header = () => {
             data-aos="fade-down"
             data-aos-duration="1200"
           >
-            <a>Check My Claim</a>
+            <a href="/vehicle-number">Check My Claim</a>
           </button>
         </nav>
       </div>
