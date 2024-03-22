@@ -13,7 +13,7 @@ export const Header = () => {
           <a className={styles.a}>The figures</a>
           <a className={styles.a}>FAQs</a>
           <button className={styles.nav__button}>
-            <a>Check My Claim</a>
+            <a href="/vehicle-number">Check My Claim</a>
           </button>
         </nav>
       </div>
