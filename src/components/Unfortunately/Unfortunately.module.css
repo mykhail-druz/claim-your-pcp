@@ -1,0 +1,30 @@
+.section {
+  @apply w-full h-screen flex bg-[#0000005C] fixed top-0 left-0 items-center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.container {
+  @apply rounded-[24px] mx-auto w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-1/2 flex flex-col items-center justify-center py-8 md:px-12 space-y-8 text-center;
+  background: linear-gradient(180deg, #5db7de 0%, #fcfaf8 21%);
+}
+
+.text_container {
+  @apply w-full md:w-[80%] flex flex-col items-center justify-center space-y-8;
+}
+
+.title {
+  @apply text-[24px] text-black;
+}
+
+.desc_first {
+  @apply text-[18px] text-[#514D55];
+}
+
+.desc_second {
+  @apply text-[18px] text-[#A39B8B];
+}
+
+.button {
+    @apply flex space-x-3 items-center justify-center bg-[#716A5C] rounded-[24px] py-5 w-[95%] md:w-full text-[18px] text-white;
+}
