@@ -1,0 +1,25 @@
+/* CustomSelect.module.css */
+
+.customSelect {
+  @apply w-[100%] py-6 px-8 border-2 border-secondary rounded-3xl mt-2 bg-white;
+}
+
+
+
+
+.select {
+    width:99%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('/arrowDown.svg') no-repeat right;
+}
+.option{
+    @apply w-[90px]
+}
+.select::-ms-expand {
+    display: none;
+}

@@ -17,6 +17,8 @@ import BackArrow from "@/icons/backArrow.svg";
 import { Questions } from "../AdditionalQuestions/Questions";
 import { CardDetailThank } from "../Components/CardDetailThank";
 import useFormPersist from 'react-hook-form-persist'
+import { QuickContact } from "../QuickContact/QuickContact";
+import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
 
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -85,6 +87,9 @@ export const VehicleRegistration = () => {
       case 2:
       component = <Questions register={register} nextStep={onSubmit} onSubmit={onSubmit} />;
       break;
+    case 3:
+      component = <QuickContact register={register} nextStep={onSubmit} onSubmit={onSubmit} />;
+      break;
     default:
       component = null;
   }
@@ -112,19 +117,23 @@ export const VehicleRegistration = () => {
               {currentStep <= 1 && <h2 className={`${styles.h2} ${roobertBold.className}`}>
               Let&apos;s find the car you had a pcp agreement with
             </h2>}
-              {currentStep === 2 && (
-                <p className={`${styles.yourCar} ${roobertSemiBold.className}`}>Your Car:<span className={styles.red}>{watchedValueCarNumber}</span></p>
+              {currentStep === 2 || currentStep === 3 && (
+                <p className={`${styles.yourCar} ${roobertSemiBold.className}`}>Your Car is<span className={styles.red}>&nbsp;{watchedValueCarNumber}</span></p>
               )}
               {currentStep === 2 && (
                 <CardDetailThank />
               )}
+              {
+                currentStep === 3 && (
+                  <>
+                  <CardDetailThankWithNumber carNumber={watchedValueCarNumber} />
+                  </>
+                )
+              }
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className={animationClass}>
                   {component}
               </div>
-              <button type="button" onClick={nextStep}>
-                Next Step
-              </button>
             </form>
             {currentStep === 0 && (
               <div className={styles.desc_container}>

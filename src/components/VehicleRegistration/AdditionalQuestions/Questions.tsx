@@ -120,7 +120,6 @@ export const Questions: React.FC<RegisterProps> = ({ register, nextStep, onSubmi
         <span>Next</span>
         <Arrow />
       </a>
-          <input type="submit" />
     </div>
   );
 };
