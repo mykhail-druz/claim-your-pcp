@@ -5,17 +5,32 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <a data-aos="fade-down" href="">
+        <a data-aos="fade-down" href="/">
           <Logo />
         </a>
         <nav className={styles.nav}>
-          <a className={styles.a} data-aos="fade-down" data-aos-duration="900">
+          <a
+            href="#scandal"
+            className={styles.a}
+            data-aos="fade-down"
+            data-aos-duration="900"
+          >
             About the scandal
           </a>
-          <a className={styles.a} data-aos="fade-down" data-aos-duration="1000">
+          <a
+            href="#figures"
+            className={styles.a}
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
             The figures
           </a>
-          <a className={styles.a} data-aos="fade-down" data-aos-duration="1100">
+          <a
+            href="#FAQ"
+            className={styles.a}
+            data-aos="fade-down"
+            data-aos-duration="1100"
+          >
             FAQs
           </a>
           <button
@@ -23,7 +38,9 @@ export const Header = () => {
             data-aos="fade-down"
             data-aos-duration="1200"
           >
-            <a href="/vehicle-number" className="text-white">Check My Claim</a>
+            <a href="/vehicle-number" className="text-white">
+              Check My Claim
+            </a>
           </button>
         </nav>
       </div>

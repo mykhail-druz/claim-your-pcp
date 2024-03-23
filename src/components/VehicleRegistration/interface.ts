@@ -13,6 +13,7 @@ export interface IFormInput {
 }
 export interface RegisterProps {
   register: UseFormRegister<IFormInput>;
-  nextStep?:any;
-  onSubmit?:any;
+  nextStep?: any;
+  onSubmit?: any;
+  firstName?: string;
 }

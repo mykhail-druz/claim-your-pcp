@@ -11,9 +11,9 @@
 }
 
 .a {
-    @apply hidden sm:block font-light;
+    @apply hidden sm:block;
 }
 
 .nav__button {
-    @apply font-medium bg-primary text-white rounded-[24px] p-2;
+    @apply bg-primary text-white hover:bg-black rounded-[24px] p-2 duration-500;
 }
