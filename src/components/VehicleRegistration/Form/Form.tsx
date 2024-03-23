@@ -93,7 +93,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 3:
+    case 4:
       component = (
         <Sign firstName={watchedFirstName} register={register} nextStep={onSubmit} onSubmit={onSubmit} />
       );
