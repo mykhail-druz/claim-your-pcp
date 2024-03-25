@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from '../modules/CustomSelect.module.css';
-import Select from 'react-select';
+import Select, { ActionMeta} from 'react-select';
 import OptionTypeBase from 'react-select'
 
 interface CustomSelectProps {
-    options: OptionTypeBase[];
-    defaultValue?: OptionTypeBase;
-    onChange: (value: OptionTypeBase) => void;
+    options: any;
+    defaultValue?: any;
+    onChange: any;
     placeholder?: string;
 }
 

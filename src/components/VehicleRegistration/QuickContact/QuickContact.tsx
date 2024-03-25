@@ -22,10 +22,12 @@ export const QuickContact: React.FC<RegisterProps> = ({ register, onSubmit }) =>
                         { value: "Ms", label: "Ms" },
                         { value: "Dr", label: "Dr" }
                     ]}
-                    defaultValue="Please select your title"
+                    defaultValue={{ value: "Please select your title", label: "Please select your title", isDisabled: true }}
                     placeholder="Please select your title"
-                    onChange={(value) => register("title").onChange(value)}
+                    onChange={(value: any) => register("title", { value: value })} // Register "title" with new value
                 />
+
+
             </div>
             <div>
                 <label className={`${roobertSemiBold.className}`}>What are your first name and last name</label>
@@ -40,26 +42,26 @@ export const QuickContact: React.FC<RegisterProps> = ({ register, onSubmit }) =>
                     <CustomSelect
                         placeholder="Date"
                         options={Array.from({ length: 31 }, (_, index) => ({ value: index + 1, label: `${index + 1}` }))}
-                        defaultValue=""
-                        onChange={(value) => register("dayOfBirth").onChange(value)}
+                        defaultValue={{ value: "", label: "Day" }}
+                        onChange={(value: any) => register("dayOfBirth", { value: value })}
                     />
 
                     <CustomSelect
                         options={Array.from({ length: 12 }, (_, index) => ({ value: index + 1, label: `${index + 1}` }))}
-                        defaultValue=""
+                        defaultValue={{ value: "", label: "Month" }}
                         placeholder="Month"
-                        onChange={(value) => register("monthOfBirth").onChange(value)}
+                        onChange={(value: any) => register("monthOfBirth", { value: value })}
                     />
 
                     <CustomSelect
                         options={Array.from({ length: 100 }, (_, index) => ({ value: 2023 - index, label: `${2023 - index}` }))}
-                        defaultValue=""
+                        defaultValue={{ value: "", label: "Year" }}
                         placeholder="Year"
-                        onChange={(value) => register("yearOfBirth").onChange(value)}
+                        onChange={(value: any) => register("yearOfBirth", { value: value })}
                     />
                 </div>
-                
             </div>
+
             <a
                 onClick={onSubmit}
                 className={`${roobertMedium.className} ${styles.button__text}`}

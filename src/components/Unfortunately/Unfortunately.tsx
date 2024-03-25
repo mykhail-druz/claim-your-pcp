@@ -21,10 +21,10 @@ export const Unfortunately = () => {
         <div className={styles.text_container}>
           <Logo />
           <p className={`${styles.title} ${roobertSemiBold.className}`}>
-            Unfortunately, we can't help
+            Unfortunately, we can&apos;t help
           </p>
           <p className={`${styles.desc_first} ${roobert.className}`}>
-            The vehicle's finance must have been between 2014 - 2020 for it to
+            The vehicle&apos;s finance must have been between 2014 - 2020 for it to
             be eligible for a claim. We apologise for any inconvenience caused
           </p>
           <p className={`${styles.desc_second} ${roobertSemiBold.className}`}>
