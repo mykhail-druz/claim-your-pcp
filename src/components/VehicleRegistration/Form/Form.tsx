@@ -20,7 +20,7 @@ import useFormPersist from "react-hook-form-persist";
 import { Sign } from "../Sign/Sign";
 import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
-
+import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
 
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -93,13 +93,34 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 4:
+
+    case 3:
       component = (
-        <Sign firstName={watchedFirstName} register={register} nextStep={onSubmit} onSubmit={onSubmit} />
+        <QuickContact
+          register={register}
+          nextStep={onSubmit}
+          onSubmit={onSubmit}
+        />
       );
       break;
-    case 3:
-      component = <QuickContact register={register} nextStep={onSubmit} onSubmit={onSubmit} />;
+    case 4:
+      component = (
+        <Sign
+          firstName={watchedFirstName}
+          register={register}
+          nextStep={onSubmit}
+          onSubmit={onSubmit}
+        />
+      );
+      break;
+    case 5:
+      component = (
+        <ThankYouForm
+          register={register}
+          nextStep={onSubmit}
+          onSubmit={onSubmit}
+        />
+      );
       break;
     default:
       component = null;
@@ -135,26 +156,28 @@ export const VehicleRegistration = () => {
                 <span style={{ textDecoration: "none" }}>Go Back</span>
               </a>
             )}
-              {currentStep <= 1 && <h2 className={`${styles.h2} ${roobertBold.className}`}>
-              Let&apos;s find the car you had a pcp agreement with
-            </h2>}
-              {currentStep === 2 || currentStep === 3 && (
-                <p className={`${styles.yourCar} ${roobertSemiBold.className}`}>Your Car is<span className={styles.red}>&nbsp;{watchedValueCarNumber}</span></p>
-              )}
-              {currentStep === 2 && (
-                <CardDetailThank />
-              )}
-              {
-                currentStep === 3 && (
-                  <>
-                  <CardDetailThankWithNumber carNumber={watchedValueCarNumber} />
-                  </>
-                )
-              }
+            {currentStep <= 1 && (
+              <h2 className={`${styles.h2} ${roobertBold.className}`}>
+                Let&apos;s find the car you had a pcp agreement with
+              </h2>
+            )}
+            {currentStep === 2 ||
+              (currentStep === 3 && (
+                <p className={`${styles.yourCar} ${roobertSemiBold.className}`}>
+                  Your Car is
+                  <span className={styles.red}>
+                    &nbsp;{watchedValueCarNumber}
+                  </span>
+                </p>
+              ))}
+            {currentStep === 2 && <CardDetailThank />}
+            {currentStep === 3 && (
+              <>
+                <CardDetailThankWithNumber carNumber={watchedValueCarNumber} />
+              </>
+            )}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className={animationClass}>
-                  {component}
-              </div>
+              <div className={animationClass}>{component}</div>
             </form>
             {currentStep === 0 && (
               <div className={styles.desc_container}>
