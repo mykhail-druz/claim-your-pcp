@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormUnregister } from "react-hook-form";
 
 export interface IFormInput {
   firstName: string;
@@ -16,9 +16,11 @@ export interface IFormInput {
   question4: boolean;
   question5: boolean;
   costType: boolean;
+  signImage: string;
 }
 export interface RegisterProps {
   register: UseFormRegister<IFormInput>;
+  unregister?: UseFormUnregister<IFormInput> | null; // Добавляем unregister
   nextStep?: any;
   onSubmit?: any;
   firstName?: string;

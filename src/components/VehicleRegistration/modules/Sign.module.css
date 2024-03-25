@@ -27,7 +27,7 @@
 }
 
 .sign_here {
-  @apply hidden md:block absolute left-[-60px] bottom-[50px];
+  @apply hidden md:block absolute left-[-60px] bottom-[225px];
 }
 
 .checkboxContainer {
@@ -88,4 +88,3 @@
   line-height: 26px;
   cursor: pointer;
 }
-
