@@ -14,19 +14,23 @@ export const ThankYouForm: React.FC<RegisterProps> = ({
   register,
   nextStep,
   onSubmit,
+  firstName,
+  carNumber,
+  title,
 }) => {
+
   return (
     <div className={styles.section}>
       <div className={styles.container}>
         <div className="space-y-4">
           <h1 className={`${roobertBold.className} ${styles.title}`}>
-            Thank you, Mr Goria
+            Thank you,{title} {firstName}
           </h1>
           <p className={`${roobertMedium.className} ${styles.subtitle}`}>
             Your PCP claim has been submitted successfully
           </p>
           <p className={`${roobertSemiBold.className} ${styles.desc}`}>
-            Your car(s) :<span className="text-[#FF0000]">YH11WDF</span>
+            Your car(s) :<span className="text-[#FF0000]">{carNumber}</span>
           </p>
         </div>
         <div className={styles.desc_container}>
@@ -43,9 +47,11 @@ export const ThankYouForm: React.FC<RegisterProps> = ({
             We have also sent a copy of this confirmation and your documents to
             the email address provided
           </p>
-              </div>
-              <div className={styles.desc_container__second}>
-          <p className={`${roobertSemiBold.className} ${styles.whatNext}`}>What happens next?</p>
+        </div>
+        <div className={styles.desc_container__second}>
+          <p className={`${roobertSemiBold.className} ${styles.whatNext}`}>
+            What happens next?
+          </p>
           <p className={`${roobertLight.className}`}>
             We will send a letter of complaint to your lender to establish if
             you are entitled to compensation. We will update you on the progress
@@ -67,55 +73,82 @@ export const ThankYouForm: React.FC<RegisterProps> = ({
           <p>
             Telephone: <a href="tel:0207 112 8616">0207 112 8616</a>
           </p>
-                  <p>Other than that, all you have to do now is sit back, relax and enjoy the rest of your afternoon!</p>
-              </div>
-          <div className="flex space-x-2 items-center">
-            <DoubleArrow />
-            <h1 className={`${roobertSemiBold.className} text-[32px]`}>
-              Fast track your claim
-            </h1>
-          </div>
-          <p className={`${roobertLight.className} w-[82.5%] ml-auto`}>
-            Answer an additional 8 questions below to help speed up the
-            processing of your claim
+          <p>
+            Other than that, all you have to do now is sit back, relax and enjoy
+            the rest of your afternoon!
           </p>
-          <h2 className={`${roobertSemiBold.className} text-[24px] leading-[26px] text-center`}>
-            What was the value of the vehicle?
-          </h2>
-              <div className={`${roobertLight.className} space-y-4`}>
-                  <label className={styles.questionCard}>
-                      <input {...register("costType")} type="radio" value="£5,000 - £10,000" />
+        </div>
+        <div className="flex space-x-2 items-center">
+          <DoubleArrow />
+          <h1
+            className={`${roobertSemiBold.className} text-[24px] lg:text-[32px]`}
+          >
+            Fast track your claim
+          </h1>
+        </div>
+        <p className={`${roobertLight.className} w-[82.5%] ml-auto`}>
+          Answer an additional 8 questions below to help speed up the processing
+          of your claim
+        </p>
+        <h2
+          className={`${roobertSemiBold.className} text-[24px] leading-[26px] text-center`}
+        >
+          What was the value of the vehicle?
+        </h2>
+        <div className={`${roobertLight.className} space-y-4`}>
+          <label className={styles.questionCard}>
+            <input
+              {...register("costType")}
+              type="radio"
+              value="£5,000 - £10,000"
+            />
 
-                      <p>£5,000 - £10,000</p>
-                  </label>
-                  <label className={styles.questionCard}>
-                      <input {...register("costType")} type="radio" value="£10,000 - £20,000" />
+            <p>£5,000 - £10,000</p>
+          </label>
+          <label className={styles.questionCard}>
+            <input
+              {...register("costType")}
+              type="radio"
+              value="£10,000 - £20,000"
+            />
 
-                      <p>£10,000 - £20,000</p>
-                  </label>
-                  <label className={styles.questionCard}>
-                      <input {...register("costType")} type="radio" value="£20,000 - £30,000" />
+            <p>£10,000 - £20,000</p>
+          </label>
+          <label className={styles.questionCard}>
+            <input
+              {...register("costType")}
+              type="radio"
+              value="£20,000 - £30,000"
+            />
 
-                      <p>£20,000 - £30,000</p>
-                  </label>
-                  <label className={styles.questionCard}>
-                      <input {...register("costType")} type="radio" value="£30,000 - £40,000" />
+            <p>£20,000 - £30,000</p>
+          </label>
+          <label className={styles.questionCard}>
+            <input
+              {...register("costType")}
+              type="radio"
+              value="£30,000 - £40,000"
+            />
 
-                      <p>£30,000 - £40,000</p>
-                  </label>
-                  <label className={styles.questionCard}>
-                      <input {...register("costType")} type="radio" value="Over £40,000`" />
+            <p>£30,000 - £40,000</p>
+          </label>
+          <label className={styles.questionCard}>
+            <input
+              {...register("costType")}
+              type="radio"
+              value="Over £40,000`"
+            />
 
-                      <p>Over £40,000</p>
-                  </label>
-              </div>
-              <a
-                  onClick={onSubmit}
-                  className={`${roobertMedium.className} ${styles.button__text}`}
-              >
-                  <span>Next</span>
-                  <Arrow />
-              </a>
+            <p>Over £40,000</p>
+          </label>
+        </div>
+        <a
+          onClick={nextStep}
+          className={`${roobertMedium.className} ${styles.button__text}`}
+        >
+          <span>Next</span>
+          <Arrow />
+        </a>
       </div>
     </div>
   );

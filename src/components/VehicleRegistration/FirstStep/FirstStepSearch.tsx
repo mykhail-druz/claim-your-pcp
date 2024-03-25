@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { RegisterProps } from '../interface';
 
 
-export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep }) => {
+export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep,onSubmit }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const toggleCheckbox = () => {
@@ -35,7 +35,7 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep })
                   {...register("numberCar")}
               />
               <button
-                  onClick={() => nextStep()}
+                  onClick={nextStep}
                   className={`${styles.input_button} ${roobertMedium.className}`}
               >
                   Search

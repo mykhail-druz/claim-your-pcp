@@ -114,7 +114,7 @@ export const Questions: React.FC<RegisterProps> = ({ register, nextStep, onSubmi
         </div>
       </div>
       <a
-              onClick={() => onSubmit()}
+        onClick={() => nextStep()}
         className={`${roobertMedium.className} ${styles.button__text}`}
       >
         <span>Next</span>
