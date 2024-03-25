@@ -21,4 +21,5 @@ export interface RegisterProps {
   nextStep?: any;
   onSubmit?: any;
   firstName?: string;
+  title?: string;
 }

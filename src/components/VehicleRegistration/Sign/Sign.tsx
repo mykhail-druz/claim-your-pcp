@@ -1,19 +1,22 @@
+import React, { useRef, useEffect, useState } from "react";
+import styles from "../modules/Sign.module.css";
 import { roobertLight, roobertMedium, roobertSemiBold } from "@/fonts/fonts";
 import { RegisterProps } from "../interface";
-import styles from "../modules/Sign.module.css";
 import Reset from "@/icons/reset.svg";
 import Secure from "@/icons/web_secured.svg";
 import SignHere from "@/icons/sign_here.svg";
-import Arrow from "@/icons/arrow.svg"
-import { useState } from "react";
+import Arrow from "@/icons/arrow.svg";
+import SignatureCanvas from "react-signature-canvas";
 
 export const Sign: React.FC<RegisterProps> = ({
   register,
   nextStep,
   firstName,
+  title,
 }) => {
   const [isCheckedClaimLion, setIsCheckedClaimLion] = useState(true);
   const [isCheckedLetter, setIsCheckedLetter] = useState(true);
+  const signatureCanvasRef = useRef<any>(null);
 
   const handleCheckboxChangeClaimLion = () => {
     setIsCheckedClaimLion(!isCheckedClaimLion);
@@ -23,13 +26,22 @@ export const Sign: React.FC<RegisterProps> = ({
     setIsCheckedLetter(!isCheckedLetter);
   };
 
+  const handleClearSignature = () => {
+    signatureCanvasRef.current.clear();
+  };
+
+  const handleSaveSignature = () => {
+    const signatureImage = signatureCanvasRef.current.toDataURL();
+    // Здесь вы можете сохранить изображение подписи, отправить его на сервер и т. д.
+  };
+
   return (
     <div className={styles.section}>
       <div className={styles.container}>
         <div className={styles.red_container}>
           <p className={roobertLight.className}>
-            Mr Umeh, based on the information provided, you could be owed up
-            to £3,000, but we need you to complete below
+            {title} {firstName}, based on the information provided, you could be
+            owed up to £3,000, but we need you to complete below
           </p>
         </div>
         <div className={styles.sign}>
@@ -38,17 +50,28 @@ export const Sign: React.FC<RegisterProps> = ({
           </p>
           <p>
             To finalise your claim, please sign in the box below. Your signature
-            will be added to this document, allowing us to act on your behalf
+            will be added to this document, allowing us to act on your behalf
             with matters concerning your claim
           </p>
-          <p className={roobertSemiBold.className}>Mr {firstName} signature</p>
-          <div>Sign Pad</div>
+          <p className={roobertSemiBold.className}>
+            {title} {firstName} signature
+          </p>
+          <SignatureCanvas
+            ref={signatureCanvasRef}
+            penColor="black"
+            canvasProps={{
+              width: 730,
+              height: 300,
+              className:
+                "border border-[#5DB7DE] rounded-[24px] overflow-hidden",
+            }}
+          />
           <p className={`${roobertLight.className} text-[14px]`}>
-             * Your signature should be as accurate as possible to avoid any
+            * Your signature should be as accurate as possible to avoid any
             delays in your claim
           </p>
           <div className={styles.sign_reset}>
-            <div className="flex cursor-pointer">
+            <div className="flex cursor-pointer" onClick={handleClearSignature}>
               <Reset />
               <p className={`${styles.reset_p} ${roobertMedium.className}`}>
                 Reset Signature
@@ -89,7 +112,13 @@ export const Sign: React.FC<RegisterProps> = ({
               applicable, a Financial Ombudsman Service application form
             </p>
           </label>
-          <a onClick={() => nextStep()} className={`${roobertMedium.className} ${styles.button__text}`}><span>Sign & Complete</span><Arrow/></a>
+          <a
+            onClick={() => nextStep()}
+            className={`${roobertMedium.className} ${styles.button__text}`}
+          >
+            <span>Sign & Complete</span>
+            <Arrow />
+          </a>
         </div>
       </div>
     </div>
