@@ -6,7 +6,7 @@ import Reset from "@/icons/reset.svg";
 import Secure from "@/icons/web_secured.svg";
 import SignHere from "@/icons/sign_here.svg";
 import Arrow from "@/icons/arrow.svg";
-import SignatureCanvas from "react-signature-canvas";
+import SignaturePad from "signature_pad";
 
 export const Sign: React.FC<RegisterProps> = ({
   register,
@@ -17,7 +17,8 @@ export const Sign: React.FC<RegisterProps> = ({
 }) => {
   const [isCheckedClaimLion, setIsCheckedClaimLion] = useState(true);
   const [isCheckedLetter, setIsCheckedLetter] = useState(true);
-  const signatureCanvasRef = useRef<any>(null);
+  const signaturePadRef = useRef<SignaturePad | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleCheckboxChangeClaimLion = () => {
     setIsCheckedClaimLion(!isCheckedClaimLion);
@@ -28,19 +29,62 @@ export const Sign: React.FC<RegisterProps> = ({
   };
 
   const handleClearSignature = () => {
-    signatureCanvasRef.current.clear();
+    if (signaturePadRef.current) {
+      signaturePadRef.current.clear();
+    }
   };
 
   const handleSaveSignature = () => {
-    const signatureImage = signatureCanvasRef.current.toDataURL();
-    register("signImage", { value: signatureImage });
+    if (signaturePadRef.current) {
+      const signatureImage = signaturePadRef.current.toDataURL();
+      console.log(signatureImage);
+
+      register("signImage", { value: signatureImage });
+    }
   };
 
   const handleReset = () => {
+    if (signaturePadRef.current) {
+      signaturePadRef.current.clear();
+    }
     if (unregister) {
       unregister("signImage");
     }
-    handleClearSignature();
+  };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+
+    if (canvas) {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d")?.scale(ratio, ratio);
+
+      signaturePadRef.current = new SignaturePad(canvas, {
+        dotSize: 0.5,
+        minWidth: 0.5,
+        maxWidth: 2.5,
+      });
+
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+    }
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+    };
+  }, []);
+
+  const resizeCanvas = () => {
+    if (canvasRef.current && signaturePadRef.current) {
+      const canvas = canvasRef.current;
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d")?.scale(ratio, ratio);
+      signaturePadRef.current.clear();
+    }
   };
 
   return (
@@ -57,21 +101,16 @@ export const Sign: React.FC<RegisterProps> = ({
             Sign & complete
           </p>
           <p>
-            To finalise your claim, please sign in the box below. Your signature
+            To finalize your claim, please sign in the box below. Your signature
             will be added to this document, allowing us to act on your behalf
             with matters concerning your claim
           </p>
           <p className={roobertSemiBold.className}>{firstName} signature</p>
-          <SignatureCanvas
-            ref={signatureCanvasRef}
-            penColor="black"
-            canvasProps={{
-              width: 730,
-              height: 300,
-              className:
-                "border border-[#5DB7DE] rounded-[24px]",
-            }}
-            onEnd={() => handleSaveSignature()}
+          <canvas
+            ref={canvasRef}
+            width={Math.min(window.innerWidth * 0.8, 500)} 
+            height={300}
+            className={`border border-[#5DB7DE] rounded-[24px] w-full lh:h-[300px] h-[200px]`}
           />
 
           <p className={`${roobertLight.className} text-[14px]`}>
@@ -101,7 +140,7 @@ export const Sign: React.FC<RegisterProps> = ({
             />
             <span className={styles.checkboxCustom}></span>
             <p>
-              I authorise ClaimLion Law to run a soft credit check on me to
+              I authorize ClaimLion Law to run a soft credit check on me to
               identify information to support my claim(s). I understand that
               this check will NOT affect my credit score
             </p>

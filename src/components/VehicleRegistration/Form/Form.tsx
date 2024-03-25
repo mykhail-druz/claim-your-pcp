@@ -38,7 +38,7 @@ export const VehicleRegistration = () => {
   const watchedValueCarNumber = watch("numberCar");
   const watchedFirstName = watch("firstName");
   const watchedTitle = watch("title");
-  console.log(watch("signImage"));
+
 
   useEffect(() => {
     const savedStep = localStorage.getItem("currentStep");
@@ -115,7 +115,7 @@ export const VehicleRegistration = () => {
           title={watchedTitle}
           register={register}
           unregister={unregister}
-          nextStep={onSubmit}
+          nextStep={nextStep}
         />
       );
       break;
