@@ -40,7 +40,7 @@ export const Sign: React.FC<RegisterProps> = ({
       <div className={styles.container}>
         <div className={styles.red_container}>
           <p className={roobertLight.className}>
-            {title} {firstName}, based on the information provided, you could be
+            , based on the information provided, you could be
             owed up to £3,000, but we need you to complete below
           </p>
         </div>
@@ -54,7 +54,7 @@ export const Sign: React.FC<RegisterProps> = ({
             with matters concerning your claim
           </p>
           <p className={roobertSemiBold.className}>
-            {title} {firstName} signature
+             signature
           </p>
           <SignatureCanvas
             ref={signatureCanvasRef}
