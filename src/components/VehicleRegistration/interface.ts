@@ -9,12 +9,13 @@ export interface IFormInput {
   title: string;
   dayOfBirth: string;
   monthOfBirth: string;
-  yearOfBirth:string;
+  yearOfBirth: string;
   question1: boolean;
   question2: boolean;
   question3: boolean;
   question4: boolean;
   question5: boolean;
+  costType: boolean;
 }
 export interface RegisterProps {
   register: UseFormRegister<IFormInput>;

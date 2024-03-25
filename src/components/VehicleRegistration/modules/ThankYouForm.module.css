@@ -1,0 +1,54 @@
+.section{
+    @apply flex flex-col
+}
+.container{
+    @apply w-2/3 mx-auto space-y-6
+}
+.title{
+    @apply text-[48px] text-center;
+    line-height: 28px;
+}
+.subtitle{
+    @apply text-[24px] text-center;
+     line-height: 28px;
+}
+.desc{
+    @apply text-[24px] text-center;
+    line-height: 26px;
+}
+.desc_container{
+    @apply w-[80%] mx-auto space-y-4
+} 
+.whatNext{
+    @apply text-[24px];
+    line-height: 26px;
+}
+.desc_container__second{
+    @apply w-[80%] mx-auto space-y-4
+}
+.fastTrack{
+    @apply px-2 py-2 bg-secondary w-[85%] text-center text-[24px]
+}
+.circleInActive{
+     width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    @apply border-2 border-secondary
+}
+.circleActive{
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    @apply border-2 border-secondary bg-secondary
+}
+.question__list{
+    @apply w-[70%] flex-col flex space-y-2
+}
+.questionCard{
+    @apply flex space-x-4 cursor-pointer border-2 items-center border-secondary p-4 rounded-2xl mx-auto w-[70%]
+}
+.button__text {
+  @apply text-[20px] text-center justify-center items-center mx-auto space-x-2 rounded-3xl w-full bg-grey-form text-white flex py-3 border border-grey-form hover:bg-transparent duration-500 hover:text-black;
+  line-height: 26px;
+  cursor: pointer;
+}

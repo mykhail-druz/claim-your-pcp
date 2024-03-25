@@ -20,6 +20,7 @@ import useFormPersist from "react-hook-form-persist";
 import { Sign } from "../Sign/Sign";
 import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
+import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
 
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -93,20 +94,29 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 4:
+
+    case 3:
       component = (
-        <Sign
-          firstName={watchedFirstName}
-          title={watchedTitle}
+        <QuickContact
           register={register}
           nextStep={onSubmit}
           onSubmit={onSubmit}
         />
       );
       break;
-    case 3:
+    case 4:
       component = (
-        <QuickContact
+        <Sign
+          firstName={watchedFirstName}
+          register={register}
+          nextStep={onSubmit}
+          onSubmit={onSubmit}
+        />
+      );
+      break;
+    case 5:
+      component = (
+        <ThankYouForm
           register={register}
           nextStep={onSubmit}
           onSubmit={onSubmit}
