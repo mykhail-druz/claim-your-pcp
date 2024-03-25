@@ -27,7 +27,7 @@ export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
   const [isLoading, setIsLoading] = useState(true);
-  const { register, handleSubmit, setValue, watch, control, formState } = useForm<IFormInput>();
+  const { register, handleSubmit, setValue, watch, control, formState, unregister } = useForm<IFormInput>();
   useFormPersist("vehicleRegistrationForm", {
     watch,
     setValue,
