@@ -10,6 +10,7 @@ import SignatureCanvas from "react-signature-canvas";
 
 export const Sign: React.FC<RegisterProps> = ({
   register,
+  unregister,
   nextStep,
   firstName,
   title,
@@ -32,7 +33,14 @@ export const Sign: React.FC<RegisterProps> = ({
 
   const handleSaveSignature = () => {
     const signatureImage = signatureCanvasRef.current.toDataURL();
-    // Здесь вы можете сохранить изображение подписи, отправить его на сервер и т. д.
+    register("signImage", { value: signatureImage });
+  };
+
+  const handleReset = () => {
+    if (unregister) {
+      unregister("signImage");
+    }
+    handleClearSignature();
   };
 
   return (
@@ -40,8 +48,8 @@ export const Sign: React.FC<RegisterProps> = ({
       <div className={styles.container}>
         <div className={styles.red_container}>
           <p className={roobertLight.className}>
-            {title} {firstName}, based on the information provided, you could be
-            owed up to £3,000, but we need you to complete below
+            {firstName}, based on the information provided, you could be owed up
+            to £3,000, but we need you to complete below
           </p>
         </div>
         <div className={styles.sign}>
@@ -53,9 +61,7 @@ export const Sign: React.FC<RegisterProps> = ({
             will be added to this document, allowing us to act on your behalf
             with matters concerning your claim
           </p>
-          <p className={roobertSemiBold.className}>
-            {title} {firstName} signature
-          </p>
+          <p className={roobertSemiBold.className}>{firstName} signature</p>
           <SignatureCanvas
             ref={signatureCanvasRef}
             penColor="black"
@@ -63,15 +69,17 @@ export const Sign: React.FC<RegisterProps> = ({
               width: 730,
               height: 300,
               className:
-                "border border-[#5DB7DE] rounded-[24px] overflow-hidden",
+                "border border-[#5DB7DE] rounded-[24px]",
             }}
+            onEnd={() => handleSaveSignature()}
           />
+
           <p className={`${roobertLight.className} text-[14px]`}>
             * Your signature should be as accurate as possible to avoid any
             delays in your claim
           </p>
           <div className={styles.sign_reset}>
-            <div className="flex cursor-pointer" onClick={handleClearSignature}>
+            <div className="flex cursor-pointer" onClick={handleReset}>
               <Reset />
               <p className={`${styles.reset_p} ${roobertMedium.className}`}>
                 Reset Signature
@@ -113,7 +121,12 @@ export const Sign: React.FC<RegisterProps> = ({
             </p>
           </label>
           <a
-            onClick={() => nextStep()}
+            onClick={() => {
+              setTimeout(() => {
+                handleSaveSignature();
+                nextStep();
+              }, 0);
+            }}
             className={`${roobertMedium.className} ${styles.button__text}`}
           >
             <span>Sign & Complete</span>

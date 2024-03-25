@@ -26,7 +26,7 @@ export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
   const [isLoading, setIsLoading] = useState(true);
-  const { register, handleSubmit, setValue, watch } = useForm<IFormInput>();
+  const { register, unregister, handleSubmit, setValue, watch } = useForm<IFormInput>();
 
   useFormPersist("vehicleRegistrationForm", {
     watch,
@@ -38,6 +38,7 @@ export const VehicleRegistration = () => {
   const watchedValueCarNumber = watch("numberCar");
   const watchedFirstName = watch("firstName");
   const watchedTitle = watch("title");
+  console.log(watch("signImage"));
 
   useEffect(() => {
     const savedStep = localStorage.getItem("currentStep");
@@ -108,7 +109,9 @@ export const VehicleRegistration = () => {
       component = (
         <Sign
           firstName={watchedFirstName}
+          title={watchedTitle}
           register={register}
+          unregister={unregister}
           nextStep={onSubmit}
           onSubmit={onSubmit}
         />
