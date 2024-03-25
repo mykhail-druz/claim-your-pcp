@@ -2,11 +2,11 @@
     @apply flex flex-col
 }
 .container{
-    @apply w-2/3 mx-auto space-y-6
+    @apply lg:w-2/3 mx-auto space-y-6
 }
 .title{
-    @apply text-[48px] text-center;
-    line-height: 28px;
+    @apply text-[40px] lg:text-[48px] text-center lg:leading-[28px] leading-[36px];
+
 }
 .subtitle{
     @apply text-[24px] text-center;
@@ -17,17 +17,17 @@
     line-height: 26px;
 }
 .desc_container{
-    @apply w-[80%] mx-auto space-y-4
+    @apply lg:w-[80%] mx-auto space-y-4
 } 
 .whatNext{
     @apply text-[24px];
     line-height: 26px;
 }
 .desc_container__second{
-    @apply w-[80%] mx-auto space-y-4
+    @apply lg:w-[80%] mx-auto space-y-4
 }
 .fastTrack{
-    @apply px-2 py-2 bg-secondary w-[85%] text-center text-[24px]
+    @apply px-2 py-2 bg-secondary lg:w-[85%] text-center text-[24px]
 }
 .circleInActive{
      width: 16px;
@@ -42,7 +42,7 @@
     @apply border-2 border-secondary bg-secondary
 }
 .question__list{
-    @apply w-[70%] flex-col flex space-y-2
+    @apply lg:w-[70%] flex-col flex space-y-2
 }
 .questionCard{
     @apply flex space-x-4 cursor-pointer border-2 items-center border-secondary p-4 rounded-2xl mx-auto w-[70%]

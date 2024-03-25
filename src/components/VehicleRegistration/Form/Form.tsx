@@ -22,12 +22,12 @@ import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
 import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
 
+
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
   const [isLoading, setIsLoading] = useState(true);
-  const { register, handleSubmit, setValue, watch } = useForm<IFormInput>();
-
+  const { register, handleSubmit, setValue, watch, control, formState } = useForm<IFormInput>();
   useFormPersist("vehicleRegistrationForm", {
     watch,
     setValue,
@@ -49,9 +49,11 @@ export const VehicleRegistration = () => {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    localStorage.setItem("currentStep", String(currentStep + 1));
 
+    const formData = watch();
+
+    console.log("Form data:", formData);
+    localStorage.setItem("currentStep", String(currentStep + 1));
     nextStep();
   };
   const nextStep = () => {
@@ -90,7 +92,7 @@ export const VehicleRegistration = () => {
         <Questions
           register={register}
           nextStep={onSubmit}
-          onSubmit={onSubmit}
+
         />
       );
       break;
@@ -100,7 +102,8 @@ export const VehicleRegistration = () => {
         <QuickContact
           register={register}
           nextStep={onSubmit}
-          onSubmit={onSubmit}
+          control={control}
+          formState={formState}
         />
       );
       break;
@@ -110,7 +113,6 @@ export const VehicleRegistration = () => {
           firstName={watchedFirstName}
           register={register}
           nextStep={onSubmit}
-          onSubmit={onSubmit}
         />
       );
       break;
@@ -119,7 +121,9 @@ export const VehicleRegistration = () => {
         <ThankYouForm
           register={register}
           nextStep={onSubmit}
-          onSubmit={onSubmit}
+          firstName={watchedFirstName}
+          carNumber={watchedValueCarNumber}
+          title={watchedTitle}
         />
       );
       break;

@@ -23,4 +23,7 @@ export interface RegisterProps {
   onSubmit?: any;
   firstName?: string;
   title?: string;
+  carNumber?:string;
+  control?:any;
+  formState?:any;
 }

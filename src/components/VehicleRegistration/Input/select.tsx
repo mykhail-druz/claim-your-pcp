@@ -8,9 +8,10 @@ interface CustomSelectProps {
     defaultValue?: any;
     onChange: any;
     placeholder?: string;
+    props?:any
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ options, defaultValue, onChange, placeholder }) => {
+const CustomSelect: React.FC<CustomSelectProps> = (props,{ options, defaultValue, onChange, placeholder }) => {
     const customStyles = {
         control: (provided: any, state: any) => ({
             ...provided,
@@ -65,11 +66,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, defaultValue, onCh
     return (
         <div className={styles.customSelect}>
             <Select
-                options={options}
                 defaultValue={defaultValue}
-                onChange={onChange}
                 styles={customStyles}
                 placeholder={placeholder}
+                {...props}
             />
         </div>
     );
