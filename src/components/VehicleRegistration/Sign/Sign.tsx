@@ -40,8 +40,8 @@ export const Sign: React.FC<RegisterProps> = ({
       <div className={styles.container}>
         <div className={styles.red_container}>
           <p className={roobertLight.className}>
-            Mr Umeh, based on the information provided, you could be owed up
-            to £3,000, but we need you to complete below
+            {title} {firstName}, based on the information provided, you could be
+            owed up to £3,000, but we need you to complete below
           </p>
         </div>
         <div className={styles.sign}>
@@ -53,8 +53,19 @@ export const Sign: React.FC<RegisterProps> = ({
             will be added to this document, allowing us to act on your behalf
             with matters concerning your claim
           </p>
-          <p className={roobertSemiBold.className}>Mr {firstName} signature</p>
-          <div>Sign Pad</div>
+          <p className={roobertSemiBold.className}>
+            {title} {firstName} signature
+          </p>
+          <SignatureCanvas
+            ref={signatureCanvasRef}
+            penColor="black"
+            canvasProps={{
+              width: 730,
+              height: 300,
+              className:
+                "border border-[#5DB7DE] rounded-[24px] overflow-hidden",
+            }}
+          />
           <p className={`${roobertLight.className} text-[14px]`}>
             * Your signature should be as accurate as possible to avoid any
             delays in your claim
