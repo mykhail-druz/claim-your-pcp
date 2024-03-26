@@ -68,8 +68,7 @@ export const Sign: React.FC<RegisterProps> = ({
             canvasProps={{
               width: 730,
               height: 300,
-              className:
-                "border border-[#5DB7DE] rounded-[24px]",
+              className: "border border-[#5DB7DE] rounded-[24px]",
             }}
             onEnd={() => handleSaveSignature()}
           />
