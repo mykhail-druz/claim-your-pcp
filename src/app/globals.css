@@ -73,3 +73,6 @@ body {
 .fade-out {
   animation: fadeOut 0.5s ease-in-out;
 }
+.red{
+  @apply text-red-600
+}

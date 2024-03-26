@@ -21,17 +21,51 @@ import { Sign } from "../Sign/Sign";
 import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
 import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
+import { FastTrackQuestions } from "../FastTrackQuestions/FastTrackQuestions";
 
 
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
   const [isLoading, setIsLoading] = useState(true);
-  const { register, handleSubmit, setValue, watch, control, formState, unregister } = useForm<IFormInput>();
+  const defaultValues: IFormInput = {
+    firstName: "",
+    lastName: "",
+    phoneNumber: 0,
+    email: "",
+    numberCar: "",
+    title: "",
+    dayOfBirth: "",
+    monthOfBirth: "",
+    yearOfBirth: "",
+    question1: null,
+    question2: null,
+    question3: null,
+    question4: null,
+    question5: null,
+    costType: null,
+    signImage: "",
+    typeFinance: "",
+    bankOption: "",
+    cardOption: "",
+    cashOption: "",
+    haveRequested: null,
+    haveEnquired: null,
+    takenOutFinance: null,
+    additionalQuestion: null,
+    youLikeInvestigate: null,
+    relevantProduct: "",
+  };
+  const { register, handleSubmit, setValue, watch, control, formState, unregister, reset,trigger } = useForm<IFormInput>({
+   
+      mode: "onChange",
+
+    defaultValues: defaultValues,
+  });
+
   useFormPersist("vehicleRegistrationForm", {
     watch,
     setValue,
-
     exclude: ["currentStep"],
   });
 
@@ -57,6 +91,14 @@ export const VehicleRegistration = () => {
     localStorage.setItem("currentStep", String(currentStep + 1));
     nextStep();
   };
+  const FinalSumbit: SubmitHandler<IFormInput>= ()=>{
+    const formData = watch();
+
+    console.log("Form data:", formData);
+
+    ResetStep()
+    reset();
+  }
   const nextStep = () => {
     setAnimationClass("fade-out");
     setIsLoading(true);
@@ -77,15 +119,25 @@ export const VehicleRegistration = () => {
       setIsLoading(false);
     }, 500);
   };
+  const ResetStep = () => {
+    setAnimationClass("fade-out");
+    setIsLoading(true);
+    setTimeout(() => {
+      setCurrentStep(0);
+      localStorage.setItem("currentStep", String(0));
+      setAnimationClass("fade-in");
+      setIsLoading(false);
+    }, 500);
+  };
 
   let component;
   switch (currentStep) {
     case 0:
-      component = <FirstStepSearch register={register} nextStep={onSubmit} />;
+      component = <FirstStepSearch formState={formState} register={register} nextStep={onSubmit} />;
       break;
     case 1:
       component = (
-        <ContactInformation register={register} nextStep={onSubmit} />
+        <ContactInformation trigger={trigger} formState={formState} register={register} nextStep={onSubmit} />
       );
       break;
     case 2:
@@ -130,6 +182,18 @@ export const VehicleRegistration = () => {
         />
       );
       break;
+    case 6:
+      component = (
+        <FastTrackQuestions
+          register={register}
+          nextStep={onSubmit}
+          firstName={watchedFirstName}
+          carNumber={watchedValueCarNumber}
+          title={watchedTitle}
+          finalSumbit={FinalSumbit}
+        />
+      );
+      break;
     default:
       component = null;
   }
@@ -161,7 +225,7 @@ export const VehicleRegistration = () => {
             {currentStep > 0 && (
               <a onClick={() => backStep()} className={styles.back}>
                 <BackArrow />
-                <span style={{ textDecoration: "none" }}>Go Back</span>
+                  <span style={{ textDecoration: "none" }}>Go Back To Previous Step</span>
               </a>
             )}
             {currentStep <= 1 && (
@@ -184,7 +248,7 @@ export const VehicleRegistration = () => {
                 <CardDetailThankWithNumber carNumber={watchedValueCarNumber} />
               </>
             )}
-            <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(FinalSumbit)}>
               <div className={animationClass}>{component}</div>
             </form>
             {currentStep === 0 && (

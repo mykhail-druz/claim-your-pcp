@@ -10,14 +10,25 @@ export interface IFormInput {
   dayOfBirth: string;
   monthOfBirth: string;
   yearOfBirth: string;
-  question1: boolean;
-  question2: boolean;
-  question3: boolean;
-  question4: boolean;
-  question5: boolean;
-  costType: boolean;
+  question1: boolean | null;
+  question2: boolean | null;
+  question3: boolean | null;
+  question4: boolean | null;
+  question5: boolean | null;
+  costType: boolean | null;
   signImage: string;
+  typeFinance: string;
+  bankOption: string;
+  cardOption: string;
+  cashOption: string;
+  haveRequested: boolean | null;
+  haveEnquired: boolean | null;
+  takenOutFinance: boolean | null;
+  additionalQuestion: boolean | null;
+  youLikeInvestigate: boolean | null;
+  relevantProduct: string;
 }
+
 export interface RegisterProps {
   register: UseFormRegister<IFormInput>;
   unregister?: UseFormUnregister<IFormInput> | null; // Добавляем unregister
@@ -25,7 +36,9 @@ export interface RegisterProps {
   onSubmit?: any;
   firstName?: string;
   title?: string;
-  carNumber?:string;
-  control?:any;
-  formState?:any;
+  carNumber?: string;
+  control?: any;
+  formState?: any;
+  finalSumbit?:any;
+  trigger?:any;
 }
