@@ -1,5 +1,5 @@
 .section {
-  @apply w-full flex min-h-[600px] items-center justify-center my-8 sm:my-16 md:my-20 lg:my-28 xl:my-32 2xl:my-32;
+  @apply w-full flex min-h-[600px] justify-center my-8 sm:my-16 md:my-20 lg:my-28 xl:my-32 2xl:my-32;
 }
 
 .container {

@@ -1,0 +1,38 @@
+.title{
+    @apply text-[24px] leading-[19px];
+}
+.container__title{
+    @apply p-6 border-2 border-grey-form w-full lg:w-1/2 rounded-3xl text-center mx-auto
+}
+.section{
+    @apply flex flex-col space-y-8
+}
+.content{
+    @apply flex flex-col items-center
+}
+.question__list{
+    @apply lg:w-[70%] w-full flex-col flex space-y-2 mt-8
+}
+.questionCard{
+    @apply flex space-x-4 cursor-pointer border-2 items-center border-secondary p-6 rounded-3xl mx-auto w-full lg:w-[70%]
+}
+.questionCard__additional{
+    @apply flex space-x-4 cursor-pointer lg:mx-0 mx-auto border-2 items-center border-secondary p-6 rounded-3xl w-full ;
+}
+    .button__text {
+  @apply text-[20px] text-center justify-center w-full lg:w-[50%] items-center mx-auto space-x-2 rounded-3xl bg-grey-form text-white flex py-3 border border-grey-form hover:bg-transparent duration-500 hover:text-black;
+  line-height: 26px;
+  cursor: pointer;
+}
+.button__outline__text{
+    @apply text-[20px] text-center justify-center mt-8 w-full lg:w-[50%] items-center mx-auto space-x-2 rounded-3xl bg-transparent text-black flex py-3 border border-grey-form hover:bg-grey-form duration-500 hover:text-white;
+  line-height: 26px;
+  cursor: pointer;
+}
+.container__additional{
+    @apply flex flex-col relative lg:pt-0 pt-[200px] space-y-2
+}
+.container__additional::after{
+    @apply absolute border lg:w-[100%] rounded-3xl border-secondary p-4 lg:right-[-110%] lg:top-[16%] top-[20px];
+    content: "The additional products you purchased can increase the total claim value you may be eligible for, but you must only select products that you did purchase, otherwise it could seriously slow down your claim as a result";
+}

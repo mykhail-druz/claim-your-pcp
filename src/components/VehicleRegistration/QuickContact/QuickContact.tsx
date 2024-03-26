@@ -11,6 +11,7 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
 
     useEffect(() => {
         setIsFormValid(formState.isValid);
+        console.log(formState)
     }, [formState.isValid]);
 
     const onSubmit = (data: any) => {
@@ -32,7 +33,7 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
                         control={control}
                         name="title"
                         defaultValue=""
-                        rules={{ required: true }}
+                        rules={{ required: false }}
                         render={({ field }) => (
                             <CustomSelect
                                 options={[
@@ -54,6 +55,7 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
                             />
                         )}
                     />
+               
                 </div>
                 <div>
                     <label className={`${roobertSemiBold.className}`}>
@@ -64,15 +66,17 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
                             <input
                                 placeholder={"First Name"}
                                 className={styles.input}
-                                {...register("firstName", { required: true })}
+                                {...register("firstName", { required: true, minLength:3 })}
                             />
+                        {formState.errors.firstName && <p className={styles.red}>Please Correct Firstname</p>}
                         </div>
                         <div className={styles.input__container}>
                             <input
                                 placeholder={"Last Name"}
                                 className={styles.input}
-                                {...register("lastName", { required: true })}
+                            {...register("lastName", { required: true, minLength:3 })}
                             />
+                             {formState.errors.lastName && <p className={styles.red}>Please Correct Lastname</p>}
                         </div>
                     </div>
                 </div>
@@ -80,6 +84,7 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
                     <label className={`${roobertSemiBold.className}`}>
                         Date of Birth
                     </label>
+                    
                     <div className={styles.select__container}>
                         <Controller
                             control={control}
