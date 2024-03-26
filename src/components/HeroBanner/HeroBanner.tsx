@@ -32,7 +32,7 @@ export const HeroBanner = () => {
           data-aos-duration="1500"
         >
           <a
-            href="/"
+            href="/vehicle-registration"
             className={`${styles.button} ${roobertSemiBold.className}`}
           >
             Check my claim

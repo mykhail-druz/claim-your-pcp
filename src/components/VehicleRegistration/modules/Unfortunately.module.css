@@ -26,5 +26,7 @@
 }
 
 .button {
-    @apply flex space-x-3 items-center justify-center bg-[#716A5C] rounded-[24px] py-5 w-[95%] md:w-full text-[18px] text-white;
+  @apply flex space-x-3 items-center justify-center bg-[#716A5C] rounded-[24px] py-5 w-[95%] md:w-full text-[18px] text-white;
 }
+
+

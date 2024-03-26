@@ -7,15 +7,22 @@ export const GetAdvice = () => {
   return (
     <section className={styles.section}>
       <div className={styles.text__block} data-aos="fade-down">
-        <Takeback  />
-        <h1 className={`${styles.title} ${roobertBold.className}`} data-aos="fade-down">
+        <Takeback />
+        <h1
+          className={`${styles.title} ${roobertBold.className}`}
+          data-aos="fade-down"
+        >
           Get expert advice
         </h1>
         <p className={styles.description} data-aos="fade-down">
           Our panel of experts are ready and waiting to help you with your
           claim. All of who are regulated by the Solicitors Regulation Authority
         </p>
-        <a href="/" className={styles.button} data-aos="fade-down">
+        <a
+          href="/vehicle-registration"
+          className={styles.button}
+          data-aos="fade-down"
+        >
           Check my claim
         </a>
       </div>

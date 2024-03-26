@@ -22,15 +22,25 @@ export const Footer = () => {
         <a href="" className={styles.privacy}>
           Privacy
         </a>
-        <div className={`${styles.footer__a}`}>
+        <div className={`${styles.footer__a} ${roobertMedium.className}`}>
           <div className="flex space-x-4 md:space-x-8">
-            <a href="">Daily Mail</a>
-            <a href="">Auto Express</a>
-            <a href="">The Guardian</a>
+            <a href="https://www.dailymail.co.uk/" target="_blank">
+              Daily Mail
+            </a>
+            <a href="https://www.autoexpress.co.uk/" target="_blank">
+              Auto Express
+            </a>
+            <a href="https://www.theguardian.com/europe" target="_blank">
+              The Guardian
+            </a>
           </div>
           <div className="flex space-x-8">
-            <a href="">Mirror</a>
-            <a href="">The Times</a>
+            <a href="https://www.themirror.com/" target="_blank">
+              Mirror
+            </a>
+            <a href="https://www.thetimes.co.uk/" target="_blank">
+              The Times
+            </a>
           </div>
         </div>
       </div>

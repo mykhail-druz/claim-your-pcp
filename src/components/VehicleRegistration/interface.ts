@@ -15,12 +15,13 @@ export interface IFormInput {
   question3: boolean;
   question4: boolean;
   question5: boolean;
+  questionOtherCars: boolean;
   costType: boolean;
   signImage: string;
 }
 export interface RegisterProps {
   register: UseFormRegister<IFormInput>;
-  unregister?: UseFormUnregister<IFormInput> | null; // Добавляем unregister
+  unregister?: UseFormUnregister<IFormInput> | null;
   nextStep?: any;
   onSubmit?: any;
   firstName?: string;

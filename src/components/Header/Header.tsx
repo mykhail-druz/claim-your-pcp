@@ -10,7 +10,7 @@ export const Header = () => {
         </a>
         <nav className={styles.nav}>
           <a
-            href="#scandal"
+            href="/#scandal"
             className={styles.a}
             data-aos="fade-down"
             data-aos-duration="900"
@@ -18,7 +18,7 @@ export const Header = () => {
             About the scandal
           </a>
           <a
-            href="#figures"
+            href="/#figures"
             className={styles.a}
             data-aos="fade-down"
             data-aos-duration="1000"
@@ -26,7 +26,7 @@ export const Header = () => {
             The figures
           </a>
           <a
-            href="#FAQ"
+            href="/#FAQ"
             className={styles.a}
             data-aos="fade-down"
             data-aos-duration="1100"
@@ -38,7 +38,7 @@ export const Header = () => {
             data-aos="fade-down"
             data-aos-duration="1200"
           >
-            <a href="/vehicle-number" className="text-white">
+            <a href="/vehicle-registration" className="text-white">
               Check My Claim
             </a>
           </button>

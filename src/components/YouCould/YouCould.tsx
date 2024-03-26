@@ -98,7 +98,7 @@ export const YouCould = () => {
           </div>
         </div>
         <div data-aos="fade-down" data-aos-duration="1600">
-          <a className={styles.button} href="/">
+          <a className={styles.button} href="/vehicle-registration">
             Check my claim
           </a>
         </div>
@@ -108,7 +108,7 @@ export const YouCould = () => {
         data-aos="fade-left"
         data-aos-duration="1500"
       >
-        <img src="/images/scandal/car.png" alt="" />
+        <img src="/images/scandal/car.png" alt="Car scandal" />
       </div>
     </section>
   );

@@ -27,7 +27,10 @@ export const SolveProblem = () => {
         data-aos="fade-in"
         data-aos-duration="1100"
       >
-        <a href="/" className={`${styles.button} ${roobertSemiBold.className}`}>
+        <a
+          href="/vehicle-registration"
+          className={`${styles.button} ${roobertSemiBold.className}`}
+        >
           Check my claim
         </a>
       </div>

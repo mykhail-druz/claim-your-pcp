@@ -24,7 +24,7 @@ export const Scandal = () => {
       <div>
         <a
           className={styles.button}
-          href="/"
+          href="/vehicle-registration"
           data-aos="fade-down"
           data-aos-duration="1100"
         >

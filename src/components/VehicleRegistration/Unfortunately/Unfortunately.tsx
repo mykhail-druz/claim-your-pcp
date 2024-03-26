@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from "react";
-import styles from "./Unfortunately.module.css";
+import styles from "../modules/Unfortunately.module.css";
 import { roobert, roobertSemiBold } from "@/fonts/fonts";
 import Logo from "@/icons/logo.svg";
 import Arrow from "@/icons/arrow.svg"
@@ -33,6 +33,9 @@ export const Unfortunately = () => {
           </p>
         </div>
         <button className={styles.button}><p>Go Back</p> <Arrow/> </button>
+        {/* <button className={styles.close} onClick={closeModal}>
+          <Close />
+        </button> */}
       </div>
     </section>
   );

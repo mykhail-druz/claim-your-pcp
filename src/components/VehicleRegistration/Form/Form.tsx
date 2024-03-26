@@ -113,6 +113,7 @@ export const VehicleRegistration = () => {
         <Sign
           firstName={watchedFirstName}
           title={watchedTitle}
+          carNumber={watchedValueCarNumber}
           register={register}
           unregister={unregister}
           nextStep={nextStep}

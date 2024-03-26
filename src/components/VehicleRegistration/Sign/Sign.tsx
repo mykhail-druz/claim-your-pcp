@@ -7,6 +7,7 @@ import Secure from "@/icons/web_secured.svg";
 import SignHere from "@/icons/sign_here.svg";
 import Arrow from "@/icons/arrow.svg";
 import SignaturePad from "signature_pad";
+import { OtherCars } from "../OtherCars/OtherCars";
 
 export const Sign: React.FC<RegisterProps> = ({
   register,
@@ -14,11 +15,21 @@ export const Sign: React.FC<RegisterProps> = ({
   nextStep,
   firstName,
   title,
+  carNumber,
 }) => {
   const [isCheckedClaimLion, setIsCheckedClaimLion] = useState(true);
   const [isCheckedLetter, setIsCheckedLetter] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const signaturePadRef = useRef<SignaturePad | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleCheckboxChangeClaimLion = () => {
     setIsCheckedClaimLion(!isCheckedClaimLion);
@@ -26,12 +37,6 @@ export const Sign: React.FC<RegisterProps> = ({
 
   const handleCheckboxChangeLetter = () => {
     setIsCheckedLetter(!isCheckedLetter);
-  };
-
-  const handleClearSignature = () => {
-    if (signaturePadRef.current) {
-      signaturePadRef.current.clear();
-    }
   };
 
   const handleSaveSignature = () => {
@@ -92,8 +97,8 @@ export const Sign: React.FC<RegisterProps> = ({
       <div className={styles.container}>
         <div className={styles.red_container}>
           <p className={roobertLight.className}>
-            {firstName}, based on the information provided, you could be owed up
-            to £3,000, but we need you to complete below
+            {title} {firstName}, based on the information provided, you could be
+            owed up to £3,000, but we need you to complete below
           </p>
         </div>
         <div className={styles.sign}>
@@ -105,12 +110,14 @@ export const Sign: React.FC<RegisterProps> = ({
             will be added to this document, allowing us to act on your behalf
             with matters concerning your claim
           </p>
-          <p className={roobertSemiBold.className}>{firstName} signature</p>
+          <p className={roobertSemiBold.className}>
+            {title} {firstName} signature
+          </p>
           <canvas
             ref={canvasRef}
-            width={Math.min(window.innerWidth * 0.8, 500)} 
+            width={Math.min(window.innerWidth * 0.8, 500)}
             height={300}
-            className={`border border-[#5DB7DE] rounded-[24px] w-full lh:h-[300px] h-[200px]`}
+            className={`border border-[#5DB7DE] rounded-[24px] w-full lg:h-[300px] h-[200px]`}
           />
 
           <p className={`${roobertLight.className} text-[14px]`}>
@@ -163,7 +170,7 @@ export const Sign: React.FC<RegisterProps> = ({
             onClick={() => {
               setTimeout(() => {
                 handleSaveSignature();
-                nextStep();
+                openModal();
               }, 0);
             }}
             className={`${roobertMedium.className} ${styles.button__text}`}
@@ -173,6 +180,14 @@ export const Sign: React.FC<RegisterProps> = ({
           </a>
         </div>
       </div>
+      {isModalOpen && (
+        <OtherCars
+          register={register}
+          carNumber={carNumber}
+          closeModal={closeModal}
+          nextStep={nextStep}
+        />
+      )}
     </div>
   );
 };
