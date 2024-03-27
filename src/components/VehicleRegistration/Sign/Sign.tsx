@@ -155,6 +155,7 @@ export const Sign: React.FC<RegisterProps> = ({
             <Arrow />
           </a>
         </div>
+
       </div>
       {isModalOpen && (
         <OtherCars
