@@ -3,7 +3,7 @@ import { UseFormRegister, UseFormUnregister } from "react-hook-form";
 export interface IFormInput {
   firstName: string;
   lastName: string;
-  phoneNumber: number;
+  phoneNumber: string;
   email: string;
   numberCar: string;
   title: string;
