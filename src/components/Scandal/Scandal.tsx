@@ -18,7 +18,7 @@ export const Scandal = () => {
         data-aos="fade-down"
         data-aos-duration="1000"
       >
-        Millions have already claimed their compensation on mis-sold PPI don't
+        Millions have already claimed their compensation on mis-sold PPI don&apos;t
         miss your chance to claim your compensation for mis-sold car finance
       </p>
       <div>

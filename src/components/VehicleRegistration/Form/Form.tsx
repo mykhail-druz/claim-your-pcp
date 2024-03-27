@@ -42,9 +42,10 @@ export const VehicleRegistration = () => {
     question2: null,
     question3: null,
     question4: null,
+    questionOtherCars:null,
     question5: null,
     costType: null,
-    signImage: "",
+    signImage: null,
     typeFinance: "",
     bankOption: "",
     cardOption: "",
@@ -168,7 +169,8 @@ export const VehicleRegistration = () => {
           carNumber={watchedValueCarNumber}
           register={register}
           unregister={unregister}
-          nextStep={nextStep}
+          nextStep={onSubmit}
+          control={control}
         />
       );
       break;

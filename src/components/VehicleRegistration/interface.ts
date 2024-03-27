@@ -17,7 +17,7 @@ export interface IFormInput {
   question5: boolean | null;
   costType: boolean | null;
   questionOtherCars: boolean | null;
-  signImage: string;
+  signImage: string | null;
   typeFinance: string;
   bankOption: string;
   cardOption: string;

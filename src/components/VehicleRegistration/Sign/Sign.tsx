@@ -6,8 +6,11 @@ import Reset from "@/icons/reset.svg";
 import Secure from "@/icons/web_secured.svg";
 import SignHere from "@/icons/sign_here.svg";
 import Arrow from "@/icons/arrow.svg";
-import SignaturePad from "signature_pad";
+// import SignaturePad from "signature_pad";
 import { OtherCars } from "../OtherCars/OtherCars";
+import { Controller } from "react-hook-form";
+import SignaturePad from "react-signature-canvas";
+import ReactSignatureCanvas from "react-signature-canvas";
 
 export const Sign: React.FC<RegisterProps> = ({
   register,
@@ -16,13 +19,13 @@ export const Sign: React.FC<RegisterProps> = ({
   firstName,
   title,
   carNumber,
+  control
 }) => {
+  // @ts-ignore
   const [isCheckedClaimLion, setIsCheckedClaimLion] = useState(true);
   const [isCheckedLetter, setIsCheckedLetter] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const signaturePadRef = useRef<SignaturePad | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
+  const sigCanvas = useRef<ReactSignatureCanvas>(null);
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -39,59 +42,21 @@ export const Sign: React.FC<RegisterProps> = ({
     setIsCheckedLetter(!isCheckedLetter);
   };
 
-  const handleSaveSignature = () => {
-    if (signaturePadRef.current) {
-      const signatureImage = signaturePadRef.current.toDataURL();
-      console.log(signatureImage);
-
-      register("signImage", { value: signatureImage });
-    }
-  };
-
   const handleReset = () => {
-    if (signaturePadRef.current) {
-      signaturePadRef.current.clear();
+    if (sigCanvas.current) {
+      sigCanvas.current.clear();
     }
     if (unregister) {
       unregister("signImage");
     }
   };
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-
-    if (canvas) {
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
-      canvas.getContext("2d")?.scale(ratio, ratio);
-
-      signaturePadRef.current = new SignaturePad(canvas, {
-        dotSize: 0.5,
-        minWidth: 0.5,
-        maxWidth: 2.5,
-      });
-
-      window.addEventListener("resize", resizeCanvas);
-      resizeCanvas();
-    }
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
-
-  const resizeCanvas = () => {
-    if (canvasRef.current && signaturePadRef.current) {
-      const canvas = canvasRef.current;
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
-      canvas.getContext("2d")?.scale(ratio, ratio);
-      signaturePadRef.current.clear();
+  const formatIntoPng = () => {
+    if (sigCanvas.current) {
+      const dataURL = sigCanvas.current.toDataURL();
+      return dataURL;
     }
   };
-
   return (
     <div className={styles.section}>
       <div className={styles.container}>
@@ -113,13 +78,24 @@ export const Sign: React.FC<RegisterProps> = ({
           <p className={roobertSemiBold.className}>
             {title} {firstName} signature
           </p>
-          <canvas
-            ref={canvasRef}
-            width={Math.min(window.innerWidth * 0.8, 500)}
-            height={300}
-            className={`border border-[#5DB7DE] rounded-[24px] w-full lg:h-[300px] h-[200px]`}
+          <Controller
+            name="signImage"
+            control={control}
+            render={({ field }) => (
+              <SignaturePad
+                ref={sigCanvas}
+                // @ts-ignore
+                onEnd={() => field.onChange(formatIntoPng())}
+                penColor="black"
+                canvasProps={{
+                  // width: Math.min(window.innerWidth * 0.8, 500),
+                  // height: 300,
+                  style: { border: "1px solid black" },
+                  className: "border border-[#5DB7DE] rounded-[24px] w-full lg:h-[300px] h-[200px]",
+                }}
+              />
+            )}
           />
-
           <p className={`${roobertLight.className} text-[14px]`}>
             * Your signature should be as accurate as possible to avoid any
             delays in your claim
@@ -169,7 +145,7 @@ export const Sign: React.FC<RegisterProps> = ({
           <a
             onClick={() => {
               setTimeout(() => {
-                handleSaveSignature();
+                nextStep();
                 openModal();
               }, 0);
             }}
@@ -186,6 +162,7 @@ export const Sign: React.FC<RegisterProps> = ({
           carNumber={carNumber}
           closeModal={closeModal}
           nextStep={nextStep}
+      
         />
       )}
     </div>
