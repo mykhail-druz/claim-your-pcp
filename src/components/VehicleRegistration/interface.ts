@@ -6,6 +6,8 @@ export interface IFormInput {
   phoneNumber: string;
   email: string;
   numberCar: string;
+  financeProvider: string;
+  vehicleFinancedBetween: boolean | null;
   title: string;
   dayOfBirth: string;
   monthOfBirth: string;
@@ -41,7 +43,9 @@ export interface RegisterProps {
   carNumber?: string;
   control?: any;
   formState?: any;
-  finalSumbit?:any;
-  trigger?:any;
-  setValue?:any;
+  finalSumbit?: any;
+  trigger?: any;
+  setValue?: any;
+  carModel?: any;
+  reset?: any;
 }
