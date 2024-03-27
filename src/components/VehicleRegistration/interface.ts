@@ -25,10 +25,8 @@ export interface IFormInput {
   haveRequested: boolean | null;
   haveEnquired: boolean | null;
   takenOutFinance: boolean | null;
-  additionalQuestion: boolean | null;
   youLikeInvestigate: boolean | null;
   relevantProduct: string;
-  vehicleData: any;
   carModel:any;
   privateReg:boolean;
 }

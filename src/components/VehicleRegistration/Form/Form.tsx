@@ -22,6 +22,7 @@ import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
 import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
 import { FastTrackQuestions } from "../FastTrackQuestions/FastTrackQuestions";
+import axios from "axios";
 
 
 export const VehicleRegistration = () => {
@@ -42,7 +43,7 @@ export const VehicleRegistration = () => {
     question2: null,
     question3: null,
     question4: null,
-    questionOtherCars:null,
+    questionOtherCars: null,
     question5: null,
     costType: null,
     signImage: null,
@@ -53,9 +54,10 @@ export const VehicleRegistration = () => {
     haveRequested: null,
     haveEnquired: null,
     takenOutFinance: null,
-    additionalQuestion: null,
     youLikeInvestigate: null,
     relevantProduct: "",
+    carModel: '',
+    privateReg: false
   };
   const { register, handleSubmit, setValue, watch, control, formState, unregister, reset,trigger } = useForm<IFormInput>({
    
@@ -92,9 +94,10 @@ export const VehicleRegistration = () => {
     localStorage.setItem("currentStep", String(currentStep + 1));
     nextStep();
   };
-  const FinalSumbit: SubmitHandler<IFormInput>= ()=>{
+  const FinalSumbit: SubmitHandler<IFormInput> = async ()=>{
     const formData = watch();
-
+    const response = await axios.post('/api/form', formData);
+    console.log('Form submitted successfully:', response.data);
     console.log("Form data:", formData);
 
     ResetStep()

@@ -111,10 +111,10 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
   </vehicleData>
 
 </Vehicle>`
-            // const covertData = convert.xml2json(textData)
             const covertData = convert.xml2js(textData)
             const carModel = covertData.elements[0].elements[1].elements[1].elements[0].text;
             setValue("carModel", { carModel: carModel, registationNumber: registrationNumber})
+            nextStep();
         } catch (error) {
             console.error('Error fetching vehicle data:', error);
             setError('Failed to fetch vehicle data. Please try again.');
