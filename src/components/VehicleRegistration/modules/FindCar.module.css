@@ -1,0 +1,23 @@
+.section {
+  @apply flex flex-col w-full rounded-[24px] bg-white border border-[#EAC885] px-8 py-16 items-center justify-center text-center my-12 space-y-4;
+}
+
+.carCard {
+  @apply flex cursor-pointer border-2 items-center space-x-1 border-[#C5C5C5] p-4 w-[300px] h-[75px] rounded-[24px];
+}
+
+.not_show {
+  @apply underline text-[#FF0000] text-[13px];
+}
+
+.question__container {
+  @apply flex justify-center space-x-2;
+}
+
+.questionCard {
+  @apply flex cursor-pointer border-2 items-center space-x-1 border-secondary p-4 w-[150px] h-[75px] rounded-[24px];
+}
+
+.question__item {
+  @apply space-y-2;
+}

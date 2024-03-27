@@ -5,7 +5,7 @@
 }
 
 .container {
-  @apply rounded-[24px] mx-auto w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-1/2 flex flex-col items-center justify-center py-8 md:px-12 space-y-8 text-center;
+  @apply relative rounded-[24px] mx-auto w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-1/2 flex flex-col items-center justify-center py-8 md:px-12 space-y-8 text-center;
   background: linear-gradient(180deg, #5db7de 0%, #fcfaf8 21%);
 }
 
@@ -29,4 +29,6 @@
   @apply flex space-x-3 items-center justify-center bg-[#716A5C] rounded-[24px] py-5 w-[95%] md:w-full text-[18px] text-white;
 }
 
-
+.close {
+  @apply absolute top-0 right-8
+}

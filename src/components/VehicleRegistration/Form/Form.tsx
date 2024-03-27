@@ -22,7 +22,7 @@ import { QuickContact } from "../QuickContact/QuickContact";
 import { CardDetailThankWithNumber } from "../Components/CardDetailThankWithNumber";
 import { ThankYouForm } from "../ThankYouForm/ThankYouForm";
 import { FastTrackQuestions } from "../FastTrackQuestions/FastTrackQuestions";
-
+import { FindCar } from "../FindCar/FindCar";
 
 export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -31,7 +31,7 @@ export const VehicleRegistration = () => {
   const defaultValues: IFormInput = {
     firstName: "",
     lastName: "",
-    phoneNumber: 0,
+    phoneNumber: null,
     email: "",
     numberCar: "",
     title: "",
@@ -42,7 +42,7 @@ export const VehicleRegistration = () => {
     question2: null,
     question3: null,
     question4: null,
-    questionOtherCars:null,
+    questionOtherCars: null,
     question5: null,
     costType: null,
     signImage: null,
@@ -57,9 +57,18 @@ export const VehicleRegistration = () => {
     youLikeInvestigate: null,
     relevantProduct: "",
   };
-  const { register, handleSubmit, setValue, watch, control, formState, unregister, reset,trigger } = useForm<IFormInput>({
-   
-      mode: "onChange",
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    control,
+    formState,
+    unregister,
+    reset,
+    trigger,
+  } = useForm<IFormInput>({
+    mode: "onChange",
 
     defaultValues: defaultValues,
   });
@@ -73,7 +82,9 @@ export const VehicleRegistration = () => {
   const watchedValueCarNumber = watch("numberCar");
   const watchedFirstName = watch("firstName");
   const watchedTitle = watch("title");
+  const watchedCarModel = watch("carModel");
 
+  console.log(watchedCarModel);
 
   useEffect(() => {
     const savedStep = localStorage.getItem("currentStep");
@@ -85,21 +96,20 @@ export const VehicleRegistration = () => {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-
     const formData = watch();
 
     console.log("Form data:", formData);
     localStorage.setItem("currentStep", String(currentStep + 1));
     nextStep();
   };
-  const FinalSumbit: SubmitHandler<IFormInput>= ()=>{
+  const FinalSumbit: SubmitHandler<IFormInput> = () => {
     const formData = watch();
 
     console.log("Form data:", formData);
 
-    ResetStep()
+    ResetStep();
     reset();
-  }
+  };
   const nextStep = () => {
     setAnimationClass("fade-out");
     setIsLoading(true);
@@ -134,24 +144,43 @@ export const VehicleRegistration = () => {
   let component;
   switch (currentStep) {
     case 0:
-      component = <FirstStepSearch setValue={setValue} formState={formState} register={register} nextStep={onSubmit} carNumber={watchedValueCarNumber} />;
+      component = (
+        <FirstStepSearch
+          setValue={setValue}
+          formState={formState}
+          register={register}
+          nextStep={onSubmit}
+          carNumber={watchedValueCarNumber}
+        />
+      );
       break;
     case 1:
       component = (
-        <ContactInformation trigger={trigger} formState={formState} register={register} nextStep={onSubmit} />
+        <ContactInformation
+          trigger={trigger}
+          formState={formState}
+          register={register}
+          nextStep={onSubmit}
+        />
       );
       break;
     case 2:
       component = (
-        <Questions
+        <FindCar
           register={register}
           nextStep={onSubmit}
-
+          carNumber={watchedValueCarNumber}
+          carModel={watchedCarModel}
+          reset={reset}
+          control={control}
         />
       );
       break;
-
     case 3:
+      component = <Questions register={register} nextStep={onSubmit} />;
+      break;
+
+    case 4:
       component = (
         <QuickContact
           register={register}
@@ -161,7 +190,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 4:
+    case 5:
       component = (
         <Sign
           firstName={watchedFirstName}
@@ -174,7 +203,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 5:
+    case 6:
       component = (
         <ThankYouForm
           register={register}
@@ -185,7 +214,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 6:
+    case 7:
       component = (
         <FastTrackQuestions
           register={register}
@@ -228,16 +257,18 @@ export const VehicleRegistration = () => {
             {currentStep > 0 && (
               <a onClick={() => backStep()} className={styles.back}>
                 <BackArrow />
-                  <span style={{ textDecoration: "none" }}>Go Back To Previous Step</span>
+                <span style={{ textDecoration: "none" }}>
+                  Go Back To Previous Step
+                </span>
               </a>
             )}
-            {currentStep <= 1 && (
+            {currentStep <= 2 && (
               <h2 className={`${styles.h2} ${roobertBold.className}`}>
                 Let&apos;s find the car you had a pcp agreement with
               </h2>
             )}
-            {currentStep === 2 ||
-              (currentStep === 3 && (
+            {currentStep === 3 ||
+              (currentStep === 4 && (
                 <p className={`${styles.yourCar} ${roobertSemiBold.className}`}>
                   Your Car is
                   <span className={styles.red}>
@@ -245,16 +276,16 @@ export const VehicleRegistration = () => {
                   </span>
                 </p>
               ))}
-            {currentStep === 2 && <CardDetailThank />}
-            {currentStep === 3 && (
+            {currentStep === 3 && <CardDetailThank />}
+            {currentStep === 4 && (
               <>
                 <CardDetailThankWithNumber carNumber={watchedValueCarNumber} />
               </>
             )}
-              <form onSubmit={handleSubmit(FinalSumbit)}>
+            <form onSubmit={handleSubmit(FinalSumbit)}>
               <div className={animationClass}>{component}</div>
             </form>
-            {currentStep === 0 && (
+            {(currentStep === 0 || currentStep === 2) && (
               <div className={styles.desc_container}>
                 <NoLongerCard />
                 <WillFind />

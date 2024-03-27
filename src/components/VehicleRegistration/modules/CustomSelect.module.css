@@ -4,6 +4,9 @@
   @apply w-[100%] py-6 px-8 border-2 border-secondary rounded-3xl mt-2 bg-white;
 }
 
+.customSelectRegistration {
+    @apply w-[100%] py-4 px-8 border-2 border-secondary rounded-3xl mt-2 bg-white;
+}
 
 
 

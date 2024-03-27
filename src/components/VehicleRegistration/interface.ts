@@ -3,9 +3,11 @@ import { UseFormRegister, UseFormUnregister } from "react-hook-form";
 export interface IFormInput {
   firstName: string;
   lastName: string;
-  phoneNumber: number;
+  phoneNumber: number | null;
   email: string;
   numberCar: string;
+  financeProvider: string;
+  vehicleFinancedBetween: boolean | null;
   title: string;
   dayOfBirth: string;
   monthOfBirth: string;
@@ -29,8 +31,8 @@ export interface IFormInput {
   youLikeInvestigate: boolean | null;
   relevantProduct: string;
   vehicleData: any;
-  carModel:any;
-  privateReg:boolean;
+  carModel: any;
+  privateReg: boolean;
 }
 
 export interface RegisterProps {
@@ -43,7 +45,9 @@ export interface RegisterProps {
   carNumber?: string;
   control?: any;
   formState?: any;
-  finalSumbit?:any;
-  trigger?:any;
-  setValue?:any;
+  finalSumbit?: any;
+  trigger?: any;
+  setValue?: any;
+  carModel?: any;
+  reset?: any;
 }
