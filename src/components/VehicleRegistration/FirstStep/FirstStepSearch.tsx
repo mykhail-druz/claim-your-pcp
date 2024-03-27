@@ -3,7 +3,7 @@ import Search from "@/icons/search.svg";
 import styles from '../modules/Form.module.css';
 import { roobertBold, roobertLight, roobertMedium } from '@/fonts/fonts';
 import { RegisterProps } from '../interface';
-import { parseString } from 'xml2js';
+import convert from 'xml-js';
 
 export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, carNumber, setValue }) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -16,32 +16,105 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
 
     const handleSearch = async () => {
         const registrationNumber = carNumber;
-        const username = "dovek";
+        const username = "misha";
         try {
-            const response = await fetch(`https://www.regcheck.org.uk/api/reg.asmx/Check?RegistrationNumber=${registrationNumber}&username=${username}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch vehicle data');
-            }
-            const textData = await response.text();
-         console.log('====================================');
-            console.log(textData);
-         console.log('====================================');
-            parseString(textData, (err, result) => {
-                if (err) {
-                    throw new Error('Failed to parse XML response');
-                }
-                // Extract the relevant data from the parsed JSON
-                const jsonData = result?.Vehicle?.vehicleJson[0];
-                if (!jsonData) {
-                    throw new Error('No data found in the XML response');
-                }
-                // Register JSON data to form fields
-                Object.keys(jsonData).forEach((key) => {
-                    setValue(key, jsonData[key][0]);
-                });
-                setError(null);
-                nextStep();
-            });
+        //     const response = await fetch(`https://www.regcheck.org.uk/api/reg.asmx/Check?RegistrationNumber=${registrationNumber}&username=${username}`);
+        //     if (!response.ok) {
+        //         throw new Error('Failed to fetch vehicle data');
+        //     }
+        //     const textData = await response.text();
+        //  console.log('====================================');
+        //     console.log(textData);
+        //  console.log('====================================');
+            const textData =`<?xml version="1.0" encoding="utf-8"?>
+
+<Vehicle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://regcheck.org.uk">
+
+  <vehicleJson>{
+  "ABICode": "",
+  "Description": "BMW 520",
+  "RegistrationYear": 2011,
+  "CarMake": {
+    "CurrentTextValue": "BMW"
+  },
+  "CarModel": {
+    "CurrentTextValue": "520"
+  },
+  "EngineSize": {
+    "CurrentTextValue": ""
+  },
+  "FuelType": {
+    "CurrentTextValue": "Diesel"
+  },
+  "MakeDescription": "BMW",
+  "ModelDescription": "520",
+  "Immobiliser": {
+    "CurrentTextValue": ""
+  },
+  "NumberOfSeats": {
+    "CurrentTextValue": ""
+  },
+  "DriverSide": {
+    "CurrentTextValue": ""
+  },
+  "ImageUrl": "https://www.regcheck.org.uk/image.aspx/@Qk1XIDUyMA==",
+  "Colour": "Black",
+  "BodyStyle": {
+    "CurrentTextValue": ""
+  },
+  "VehicleInsuranceGroup": 14,
+  "VehicleInsuranceGroupOutOf": 20
+}</vehicleJson>
+
+  <vehicleData>
+
+    <ABICode />
+
+    <Description>BMW 520</Description>
+
+    <RegistrationYear>2011</RegistrationYear>
+
+    <CarMake>
+
+      <CurrentTextValue>BMW</CurrentTextValue>
+
+    </CarMake>
+
+    <CarModel>520</CarModel>
+
+    <BodyStyle>
+
+      <CurrentTextValue />
+
+    </BodyStyle>
+
+    <EngineSize>
+
+      <CurrentTextValue />
+
+    </EngineSize>
+
+    <FuelType>
+
+      <CurrentTextValue>Diesel</CurrentTextValue>
+
+    </FuelType>
+
+    <ModelDescription>520</ModelDescription>
+
+    <Immobiliser>
+
+      <CurrentTextValue />
+
+    </Immobiliser>
+
+  </vehicleData>
+
+</Vehicle>`
+            // const covertData = convert.xml2json(textData)
+            const covertData = convert.xml2js(textData)
+            const carModel = covertData.elements[0].elements[1].elements[1].elements[0].text;
+            setValue("carModel", { carModel: carModel, registationNumber: registrationNumber})
         } catch (error) {
             console.error('Error fetching vehicle data:', error);
             setError('Failed to fetch vehicle data. Please try again.');
@@ -85,6 +158,7 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
                     <input
                         type="checkbox"
                         checked={isChecked}
+                        {...register("privateReg")}
                         onChange={toggleCheckbox}
                     />
                     <span className="slider"></span>
@@ -96,7 +170,6 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
                     {isChecked ? "Private Reg Vehicle?" : "Non-Private Reg Vehicle?"}
                 </p>
             </div>
-            <input type="hidden" {...register("vehicleData")} />
             <p className={`${styles.skip} ${roobertMedium.className}`}>
                 Skip Registration Plate
             </p>

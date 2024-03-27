@@ -28,7 +28,9 @@ export interface IFormInput {
   additionalQuestion: boolean | null;
   youLikeInvestigate: boolean | null;
   relevantProduct: string;
-  vehicleData:any;
+  vehicleData: any;
+  carModel:any;
+  privateReg:boolean;
 }
 
 export interface RegisterProps {
