@@ -28,6 +28,7 @@ export interface IFormInput {
   additionalQuestion: boolean | null;
   youLikeInvestigate: boolean | null;
   relevantProduct: string;
+  vehicleData:any;
 }
 
 export interface RegisterProps {
@@ -42,4 +43,5 @@ export interface RegisterProps {
   formState?: any;
   finalSumbit?:any;
   trigger?:any;
+  setValue?:any;
 }

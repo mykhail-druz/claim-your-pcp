@@ -134,7 +134,7 @@ export const VehicleRegistration = () => {
   let component;
   switch (currentStep) {
     case 0:
-      component = <FirstStepSearch formState={formState} register={register} nextStep={onSubmit} />;
+      component = <FirstStepSearch setValue={setValue} formState={formState} register={register} nextStep={onSubmit} carNumber={watchedValueCarNumber} />;
       break;
     case 1:
       component = (
