@@ -1,11 +1,17 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 import styles from "../modules/Unfortunately.module.css";
 import { roobert, roobertSemiBold } from "@/fonts/fonts";
 import Logo from "@/icons/logo.svg";
-import Arrow from "@/icons/arrow.svg"
+import Arrow from "@/icons/arrow.svg";
+import { RegisterProps } from "../interface";
+import Close from "@/icons/close.svg";
 
-export const Unfortunately = () => {
+interface UnfortunatelyProps extends RegisterProps {
+  closeModal: () => void;
+}
+
+export const Unfortunately: React.FC<UnfortunatelyProps> = ({ closeModal }) => {
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = "hidden";
@@ -24,18 +30,21 @@ export const Unfortunately = () => {
             Unfortunately, we can&apos;t help
           </p>
           <p className={`${styles.desc_first} ${roobert.className}`}>
-            The vehicle&apos;s finance must have been between 2014 - 2020 for it to
-            be eligible for a claim. We apologise for any inconvenience caused
+            The vehicle&apos;s finance must have been between 2014 - 2020 for it
+            to be eligible for a claim. We apologise for any inconvenience
+            caused
           </p>
           <p className={`${styles.desc_second} ${roobertSemiBold.className}`}>
             If this choice was made in error, please click the button below to
             return to the form
           </p>
         </div>
-        <button className={styles.button}><p>Go Back</p> <Arrow/> </button>
-        {/* <button className={styles.close} onClick={closeModal}>
+        <button className={styles.button} onClick={closeModal}>
+          <p>Go Back</p> <Arrow />{" "}
+        </button>
+        <button className={styles.close} onClick={closeModal}>
           <Close />
-        </button> */}
+        </button>
       </div>
     </section>
   );

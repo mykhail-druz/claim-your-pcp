@@ -12,34 +12,44 @@ export const Footer = () => {
           <Logo />
         </a>
         <p className={styles.footer__p}>
-          © 2024 claim.yourpcp.co.uk is a trading name of ClaimLion Law.
-          ClaimLion Law that is a trading name of BlackLion Law LLP, a limited
-          liability partnership registered in England & Wales and regulated by
-          the Solicitors Regulation Authority under SRA number: 518911. A list
-          of the members of the LLP is displayed at our registered office at
-          Berkeley Square House, Berkeley Square, London W1J 6BD
+          Car Finance Solicitors is trading names of Pearson Locke Ltd which is
+          a limited company registered in England & Wales with registration
+          number 12851925. A list of directors of the company is available for
+          inspection at the registered office: 837 Manchester Road, Bradford,
+          England, BD5 8LT. Authorised by the Solicitors Regulation Authority
+          under Registration Number 807786. VAT number 384131407
         </p>
-        <a href="" className={styles.privacy}>
+        {/* <a
+          href="https://pearsonlocke.co.uk/privacy-policy/"
+          target="_blank"
+          className={styles.privacy}
+        >
           Privacy
-        </a>
+        </a> */}
         <div className={`${styles.footer__a} ${roobertMedium.className}`}>
           <div className="flex space-x-4 md:space-x-8">
-            <a href="https://www.dailymail.co.uk/" target="_blank">
-              Daily Mail
+            <a href="https://pearsonlocke.co.uk/about-us/" target="_blank">
+              About Us
             </a>
-            <a href="https://www.autoexpress.co.uk/" target="_blank">
-              Auto Express
-            </a>
-            <a href="https://www.theguardian.com/europe" target="_blank">
-              The Guardian
+            <a
+              href="https://pearsonlocke.co.uk/privacy-policy/"
+              target="_blank"
+            >
+              Privacy Policy
             </a>
           </div>
           <div className="flex space-x-8">
-            <a href="https://www.themirror.com/" target="_blank">
-              Mirror
+            <a
+              href="https://pearsonlocke.co.uk/terms-conditions/"
+              target="_blank"
+            >
+              Terms & Conditions
             </a>
-            <a href="https://www.thetimes.co.uk/" target="_blank">
-              The Times
+            <a
+              href="https://pearsonlocke.co.uk/complaints-policy/"
+              target="_blank"
+            >
+              Complaints Policy
             </a>
           </div>
         </div>
