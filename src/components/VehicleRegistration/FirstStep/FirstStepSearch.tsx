@@ -23,101 +23,101 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({
 
   const handleSearch = async () => {
     const registrationNumber = carNumber;
-    const username = "misha";
+    const username = "pearsonlocke";
     try {
-      //     const response = await fetch(`https://www.regcheck.org.uk/api/reg.asmx/Check?RegistrationNumber=${registrationNumber}&username=${username}`);
-      //     if (!response.ok) {
-      //         throw new Error('Failed to fetch vehicle data');
-      //     }
-      //     const textData = await response.text();
+          const response = await fetch(`https://www.regcheck.org.uk/api/reg.asmx/Check?RegistrationNumber=${registrationNumber}&username=${username}`);
+          if (!response.ok) {
+              throw new Error('Failed to fetch vehicle data');
+          }
+          const textData = await response.text();
       //  console.log('====================================');
       //     console.log(textData);
       //  console.log('====================================');
-      const textData = `<?xml version="1.0" encoding="utf-8"?>
+//       const textData = `<?xml version="1.0" encoding="utf-8"?>
 
-<Vehicle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://regcheck.org.uk">
+// <Vehicle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://regcheck.org.uk">
 
-  <vehicleJson>{
-  "ABICode": "",
-  "Description": "BMW 520",
-  "RegistrationYear": 2011,
-  "CarMake": {
-    "CurrentTextValue": "BMW"
-  },
-  "CarModel": {
-    "CurrentTextValue": "520"
-  },
-  "EngineSize": {
-    "CurrentTextValue": ""
-  },
-  "FuelType": {
-    "CurrentTextValue": "Diesel"
-  },
-  "MakeDescription": "BMW",
-  "ModelDescription": "520",
-  "Immobiliser": {
-    "CurrentTextValue": ""
-  },
-  "NumberOfSeats": {
-    "CurrentTextValue": ""
-  },
-  "DriverSide": {
-    "CurrentTextValue": ""
-  },
-  "ImageUrl": "https://www.regcheck.org.uk/image.aspx/@Qk1XIDUyMA==",
-  "Colour": "Black",
-  "BodyStyle": {
-    "CurrentTextValue": ""
-  },
-  "VehicleInsuranceGroup": 14,
-  "VehicleInsuranceGroupOutOf": 20
-}</vehicleJson>
+//   <vehicleJson>{
+//   "ABICode": "",
+//   "Description": "BMW 520",
+//   "RegistrationYear": 2011,
+//   "CarMake": {
+//     "CurrentTextValue": "BMW"
+//   },
+//   "CarModel": {
+//     "CurrentTextValue": "520"
+//   },
+//   "EngineSize": {
+//     "CurrentTextValue": ""
+//   },
+//   "FuelType": {
+//     "CurrentTextValue": "Diesel"
+//   },
+//   "MakeDescription": "BMW",
+//   "ModelDescription": "520",
+//   "Immobiliser": {
+//     "CurrentTextValue": ""
+//   },
+//   "NumberOfSeats": {
+//     "CurrentTextValue": ""
+//   },
+//   "DriverSide": {
+//     "CurrentTextValue": ""
+//   },
+//   "ImageUrl": "https://www.regcheck.org.uk/image.aspx/@Qk1XIDUyMA==",
+//   "Colour": "Black",
+//   "BodyStyle": {
+//     "CurrentTextValue": ""
+//   },
+//   "VehicleInsuranceGroup": 14,
+//   "VehicleInsuranceGroupOutOf": 20
+// }</vehicleJson>
 
-  <vehicleData>
+//   <vehicleData>
 
-    <ABICode />
+//     <ABICode />
 
-    <Description>BMW 520</Description>
+//     <Description>BMW 520</Description>
 
-    <RegistrationYear>2011</RegistrationYear>
+//     <RegistrationYear>2011</RegistrationYear>
 
-    <CarMake>
+//     <CarMake>
 
-      <CurrentTextValue>BMW</CurrentTextValue>
+//       <CurrentTextValue>BMW</CurrentTextValue>
 
-    </CarMake>
+//     </CarMake>
 
-    <CarModel>520</CarModel>
+//     <CarModel>520</CarModel>
 
-    <BodyStyle>
+//     <BodyStyle>
 
-      <CurrentTextValue />
+//       <CurrentTextValue />
 
-    </BodyStyle>
+//     </BodyStyle>
 
-    <EngineSize>
+//     <EngineSize>
 
-      <CurrentTextValue />
+//       <CurrentTextValue />
 
-    </EngineSize>
+//     </EngineSize>
 
-    <FuelType>
+//     <FuelType>
 
-      <CurrentTextValue>Diesel</CurrentTextValue>
+//       <CurrentTextValue>Diesel</CurrentTextValue>
 
-    </FuelType>
+//     </FuelType>
 
-    <ModelDescription>520</ModelDescription>
+//     <ModelDescription>520</ModelDescription>
 
-    <Immobiliser>
+//     <Immobiliser>
 
-      <CurrentTextValue />
+//       <CurrentTextValue />
 
-    </Immobiliser>
+//     </Immobiliser>
 
-  </vehicleData>
+//   </vehicleData>
 
-</Vehicle>`;
+// </Vehicle>`;
       const covertData = convert.xml2js(textData);
       const carModel =
         covertData.elements[0].elements[1].elements[1].elements[0].text;

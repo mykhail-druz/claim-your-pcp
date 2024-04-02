@@ -78,7 +78,6 @@ export const VehicleRegistration = () => {
     trigger,
   } = useForm<IFormInput>({
     mode: "onChange",
-
     defaultValues: defaultValues,
   });
 
@@ -137,7 +136,6 @@ export const VehicleRegistration = () => {
     }, 250);
   };
   const nextStep = () => {
-
     setAnimationClass("fade-out");
     setIsLoading(true);
     setTimeout(() => {
