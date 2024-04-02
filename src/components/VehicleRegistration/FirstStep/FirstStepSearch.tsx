@@ -13,9 +13,10 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({
   skipRegistration,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [vehicleData, setVehicleData] = useState<any>(null); // State to store vehicle data
-  const [error, setError] = useState<string | null>(null); // State to store error message
+  const [vehicleData, setVehicleData] = useState<any>(null); 
+  const [error, setError] = useState<string | null>(null); 
   const [inputValue, setInputValue] = useState("");
+  
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
   };
@@ -159,9 +160,10 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({
             minLength: 4,
             maxLength: 8,
           })}
+          onChange={(e)=>handleInputChange(e)}
         />
         <button
-          // disabled={!inputValue}
+          disabled={!inputValue.trim()}
           onClick={handleSearch}
           className={`${styles.input_button} ${roobertMedium.className}`}
         >
@@ -169,30 +171,33 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({
         </button>
       </div>
       <button className={`${styles.mobile_button}`}>Search</button>
-      {error && <p className="text-red-500">{error}</p>}
+      {/* {error && <p className="text-red-500">{error}</p>} */}
       <div className="flex space-x-2 items-center">
         <label className="switch">
           <input
             type="checkbox"
             checked={isChecked}
+           
             {...register("privateReg")}
-            onChange={handleInputChange}
+            onChange={()=>toggleCheckbox()}
           />
           <span className="slider"></span>
         </label>
         <a
           className={`${styles.reg_vehicle} ${roobertMedium.className}`}
-          onClick={() => toggleCheckbox}
+          onClick={() => toggleCheckbox()}
         >
           {isChecked ? "Private Reg Vehicle?" : "Non-Private Reg Vehicle?"}
         </a>
       </div>
+      <div className="pt-4">
       <a
-        onClick={skipRegistration}
+        onClick={()=>skipRegistration()}
         className={`${styles.skip} ${roobertMedium.className}`}
       >
         Skip Registration Plate
       </a>
+      </div>
     </div>
   );
 };

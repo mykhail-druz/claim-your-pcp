@@ -37,7 +37,7 @@
 }
 
 .skip {
-  @apply text-[#FF0000] underline pt-4 cursor-pointer;
+  @apply text-[#FF0000] underline cursor-pointer;
 }
 
 .desc_container {
