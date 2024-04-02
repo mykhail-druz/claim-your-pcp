@@ -5,6 +5,7 @@ import { roobertSemiBold, roobertMedium } from "@/fonts/fonts";
 import Arrow from "@/icons/arrow.svg";
 import CustomSelect from "../Input/select";
 import { Controller, useForm } from "react-hook-form";
+import { options } from "../FindCar/optionsData";
 
 export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, control, formState }) => {
     const [isFormValid, setIsFormValid] = useState(false);
@@ -36,18 +37,7 @@ export const QuickContact: React.FC<RegisterProps> = ({ nextStep, register, cont
                         rules={{ required: false }}
                         render={({ field }) => (
                             <CustomSelect
-                                options={[
-                                    {
-                                        value: "Please select your title",
-                                        label: "Please select your title",
-                                        isDisabled: true,
-                                    },
-                                    { value: "Mr", label: "Mr" },
-                                    { value: "Mrs", label: "Mrs" },
-                                    { value: "Miss", label: "Miss" },
-                                    { value: "Ms", label: "Ms" },
-                                    { value: "Dr", label: "Dr" },
-                                ]}
+                                options={options}
                                 placeholder="Please select your title"
                                 onChange={(selectedOption: any, actionMeta: any) =>
                                     field.onChange(selectedOption.value)
