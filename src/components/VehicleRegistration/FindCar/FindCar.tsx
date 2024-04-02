@@ -11,6 +11,7 @@ import { Controller } from "react-hook-form";
 import CustomSelect from "../Input/select";
 import { useState } from "react";
 import { Unfortunately } from "../Unfortunately/Unfortunately";
+import { options } from "./optionsData";
 
 export const FindCar: React.FC<RegisterProps> = ({
   register,
@@ -47,9 +48,9 @@ export const FindCar: React.FC<RegisterProps> = ({
         <input type="radio" value={carModel && carModel.carModel} />
         <p> {carModel && carModel.carModel}</p>
       </label>
-      <a className={`${styles.not_show} ${roobertLight}`}>
+      {/* <a className={`${styles.not_show} ${roobertLight}`}>
         My Vehicle is not showing or it is not eligible
-      </a>
+      </a> */}
       <div className="w-[50%] h-[1px] bg-[#000000]" />
       <div>
         <p className={roobertBold.className}>
@@ -65,46 +66,9 @@ export const FindCar: React.FC<RegisterProps> = ({
             rules={{ required: false }}
             render={({ field }) => (
               <CustomSelect
-              padding
-                options={[
-                  {
-                    value: "Select a finance provider",
-                    label: "Select a finance provider",
-                    isDisabled: true,
-                  },
-                  {
-                    value: "1st Stop Car Finance",
-                    label: "1st Stop Car Finance",
-                  },
-                  {
-                    value: "Advantage  Finanace",
-                    label: "Advantage  Finanace",
-                  },
-                  { value: "ALD Automotive", label: "ALD Automotive" },
-                  { value: "Aldermore Bank", label: "Aldermore Bank" },
-                  {
-                    value: "Alpha Romero Financial Services",
-                    label: "Alpha Romero Financial Services",
-                  },
-                  {
-                    value: "Alphera Financial Services",
-                    label: "Alphera Financial Services",
-                  },
-                  { value: "Auto Union Finance", label: "Auto Union Finance" },
-                  {
-                    value: "Autobank Financial Services",
-                    label: "Autobank Financial Services",
-                  },
-                  {
-                    value: "AutoMoney Motor Finance",
-                    label: "AutoMoney Motor Finance",
-                  },
-                  {
-                    value: "Barclays Partner Finance",
-                    label: "Barclays Partner Finance",
-                  },
-                  { value: "Billing Finance", label: "Billing Finance" },
-                ]}
+                {...field}
+                padding
+                options={options}
                 placeholder="Select a finance provider"
                 onChange={(selectedOption: any, actionMeta: any) =>
                   field.onChange(selectedOption.value)

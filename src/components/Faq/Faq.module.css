@@ -47,7 +47,7 @@
 }
 
 .open {
-  @apply text-white text-[18px] font-light;
+  @apply text-white text-[18px] font-light mt-4;
   max-height: 600px;
   opacity: 1;
   transition: max-height 0.5s ease-out, opacity 1s ease-out;
