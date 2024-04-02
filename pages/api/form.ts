@@ -5,7 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const url = "https://hooks.zapier.com/hooks/catch/18169635/30by9wp/"; 
+  const url = "https://hooks.zapier.com/hooks/catch/13171226/3pts6co/"; 
 
   try {
    const requestBody = {
