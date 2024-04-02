@@ -102,7 +102,8 @@ export const VehicleRegistration = () => {
       setCurrentStep(Number(savedStep));
     }
     if (showContactInformation) {
-      setShowContactInformation(Boolean(showContactInformation));
+      setShowContactInformation(JSON.parse(showContactInformation));
+
     }
     setIsLoading(false);
   }, [setValue]);
@@ -130,7 +131,7 @@ export const VehicleRegistration = () => {
     setTimeout(() => {
       setCurrentStep(currentStep + 1);
       localStorage.setItem("currentStep", String(currentStep + 1));
-      localStorage.setItem("showContactInformation", String(showContactInformation));
+      localStorage.setItem("showContactInformation", JSON.stringify(true));
       setAnimationClass("fade-in");
       setIsLoading(false);
     }, 250);
@@ -142,7 +143,7 @@ export const VehicleRegistration = () => {
     setTimeout(() => {
       setCurrentStep(currentStep + 1);
       localStorage.setItem("currentStep", String(currentStep + 1));
-      localStorage.setItem("showContactInformation", String(showContactInformation));
+      localStorage.setItem("showContactInformation", JSON.stringify(false));
       setAnimationClass("fade-in");
       setIsLoading(false);
   
@@ -150,12 +151,15 @@ export const VehicleRegistration = () => {
    
   };
   const backStep = () => {
-    setShowContactInformation(false);
+    
     setAnimationClass("fade-out");
     setIsLoading(true);
     setTimeout(() => {
       setCurrentStep(currentStep - 1);
       localStorage.setItem("currentStep", String(currentStep - 1));
+      setShowContactInformation(false);
+      localStorage.setItem("showContactInformation", JSON.stringify(false));
+
       setAnimationClass("fade-in");
       setIsLoading(false);
     }, 500);
@@ -185,27 +189,28 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case showContactInformation && 1:
-      component = (
-        <ContactInformation
-          trigger={trigger}
-          formState={formState}
-          register={register}
-          nextStep={FinalSumbit}
-        />
-      );
-      break;
-    case !showContactInformation && 1:
-      component = (
-        <FindCar
-          register={register}
-          nextStep={onSubmit}
-          carNumber={watchedValueCarNumber}
-          carModel={watchedCarModel}
-          reset={reset}
-          control={control}
-        />
-      );
+    case 1:
+      if (showContactInformation) {
+        component = (
+          <ContactInformation
+            trigger={trigger}
+            formState={formState}
+            register={register}
+            nextStep={FinalSumbit}
+          />
+        );
+      } else {
+        component = (
+          <FindCar
+            register={register}
+            nextStep={onSubmit}
+            carNumber={watchedValueCarNumber}
+            carModel={watchedCarModel}
+            reset={reset}
+            control={control}
+          />
+        );
+      }
       break;
     case 2:
       component = <Questions register={register} nextStep={onSubmit} />;
@@ -316,7 +321,7 @@ export const VehicleRegistration = () => {
             <form onSubmit={handleSubmit(FinalSumbit)}>
               <div className={animationClass}>{component}</div>
             </form>
-            {(currentStep === 0 || currentStep === 2) && (
+            {(currentStep === 0 || currentStep === 1) && (
               <div className={styles.desc_container}>
                 <NoLongerCard />
                 <WillFind />
