@@ -66,7 +66,6 @@ export const FindCar: React.FC<RegisterProps> = ({
             rules={{ required: false }}
             render={({ field }) => (
               <CustomSelect
-                {...field}
                 padding
                 options={options}
                 placeholder="Select a finance provider"
