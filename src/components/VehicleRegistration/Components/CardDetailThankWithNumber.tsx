@@ -2,7 +2,7 @@ import { roobertBold, roobertSemiBold } from '@/fonts/fonts'
 import React from 'react'
 import styles from '../modules/Form.module.css'
 interface CardDetailThankWithNumberProps {
- carNumber:string
+ carNumber:string | any 
 }
 export const CardDetailThankWithNumber: React.FC<CardDetailThankWithNumberProps> = ({ carNumber }) => {
   return (

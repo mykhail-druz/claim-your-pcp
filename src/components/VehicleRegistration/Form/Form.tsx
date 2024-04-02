@@ -30,6 +30,9 @@ export const VehicleRegistration = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [animationClass, setAnimationClass] = useState("fade-in");
   const [isLoading, setIsLoading] = useState(true);
+
+  const [showContactInformation, setShowContactInformation] = useState(false);
+
   const defaultValues: IFormInput = {
     firstName: "",
     lastName: "",
@@ -58,7 +61,10 @@ export const VehicleRegistration = () => {
     youLikeInvestigate: null,
     relevantProduct: "",
     carModel: '',
-    privateReg: false
+    privateReg: false,
+    financeProvider: "",
+    vehicleFinancedBetween: null,
+    vehicleData: undefined
   };
   const {
     register,
@@ -87,13 +93,16 @@ export const VehicleRegistration = () => {
   const watchedTitle = watch("title");
   const watchedCarModel = watch("carModel");
 
-  console.log(watchedCarModel);
+
 
   useEffect(() => {
     const savedStep = localStorage.getItem("currentStep");
-
+    const showContactInformation = localStorage.getItem("showContactInformation");
     if (savedStep) {
       setCurrentStep(Number(savedStep));
+    }
+    if (showContactInformation) {
+      setShowContactInformation(Boolean(showContactInformation));
     }
     setIsLoading(false);
   }, [setValue]);
@@ -114,17 +123,34 @@ export const VehicleRegistration = () => {
     ResetStep();
     reset();
   };
+  const skipRegistration = () => {
+    setAnimationClass("fade-out");
+    setIsLoading(true);
+    setShowContactInformation(true);
+    setTimeout(() => {
+      setCurrentStep(currentStep + 1);
+      localStorage.setItem("currentStep", String(currentStep + 1));
+      localStorage.setItem("showContactInformation", String(showContactInformation));
+      setAnimationClass("fade-in");
+      setIsLoading(false);
+    }, 250);
+  };
   const nextStep = () => {
+
     setAnimationClass("fade-out");
     setIsLoading(true);
     setTimeout(() => {
       setCurrentStep(currentStep + 1);
       localStorage.setItem("currentStep", String(currentStep + 1));
+      localStorage.setItem("showContactInformation", String(showContactInformation));
       setAnimationClass("fade-in");
       setIsLoading(false);
+  
     }, 500);
+   
   };
   const backStep = () => {
+    setShowContactInformation(false);
     setAnimationClass("fade-out");
     setIsLoading(true);
     setTimeout(() => {
@@ -155,20 +181,21 @@ export const VehicleRegistration = () => {
           register={register}
           nextStep={onSubmit}
           carNumber={watchedValueCarNumber}
+          skipRegistration={skipRegistration}
         />
       );
       break;
-    case 1:
+    case showContactInformation && 1:
       component = (
         <ContactInformation
           trigger={trigger}
           formState={formState}
           register={register}
-          nextStep={onSubmit}
+          nextStep={FinalSumbit}
         />
       );
       break;
-    case 2:
+    case !showContactInformation && 1:
       component = (
         <FindCar
           register={register}
@@ -180,11 +207,11 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 3:
+    case 2:
       component = <Questions register={register} nextStep={onSubmit} />;
       break;
 
-    case 4:
+    case 3:
       component = (
         <QuickContact
           register={register}
@@ -194,7 +221,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 5:
+    case 4:
       component = (
         <Sign
           firstName={watchedFirstName}
@@ -207,7 +234,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 6:
+    case 5:
       component = (
         <ThankYouForm
           register={register}
@@ -218,7 +245,7 @@ export const VehicleRegistration = () => {
         />
       );
       break;
-    case 7:
+    case 6:
       component = (
         <FastTrackQuestions
           register={register}
@@ -266,7 +293,7 @@ export const VehicleRegistration = () => {
                 </span>
               </a>
             )}
-            {currentStep <= 2 && (
+            {currentStep <= 1 && (
               <h2 className={`${styles.h2} ${roobertBold.className}`}>
                 Let&apos;s find the car you had a pcp agreement with
               </h2>

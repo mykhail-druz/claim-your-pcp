@@ -29,7 +29,6 @@ export const ContactInformation: React.FC<RegisterProps> = ({ nextStep, formStat
         <Input label_title={'Email address'} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" label_desc={"We'll update you about your claim via email"} placeholder="Email" label={"email"} register={register} required={{ required: true, minLength: 3, pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ }} icon={<Mail />} />
         {formState.errors.email && <p className="red">Please write correct mail</p>}
       </div>
-
       <button
         type="button"
         onClick={() => { nextStep() }}

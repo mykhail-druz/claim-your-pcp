@@ -5,11 +5,11 @@ import { roobertBold, roobertLight, roobertMedium } from '@/fonts/fonts';
 import { RegisterProps } from '../interface';
 import convert from 'xml-js';
 
-export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, carNumber, setValue }) => {
+export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, carNumber, setValue, skipRegistration }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [vehicleData, setVehicleData] = useState<any>(null); // State to store vehicle data
     const [error, setError] = useState<string | null>(null); // State to store error message
-
+  const [inputValue, setInputValue] = useState('');
     const toggleCheckbox = () => {
         setIsChecked(!isChecked);
     };
@@ -127,7 +127,9 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
         const switchElement = document.querySelector(".switch") as HTMLElement;
         switchElement.style.borderColor = isChecked ? "#4CAF50" : "#ccc";
     }, [isChecked]);
-
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
     return (
         <div className={styles.registration}>
             <p className={`${roobertBold.className} text-[18px] text-center`}>
@@ -142,9 +144,12 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
                     type="text"
                     className={`${styles.input} ${roobertMedium.className}`}
                     placeholder="Enter vehicle registration number"
-                    {...register("numberCar")}
+                    required
+   
+            {...register("numberCar", { required: true, minLength: 4, maxLength: 8 })}
                 />
                 <button
+                    disabled={!inputValue}
                     onClick={handleSearch}
                     className={`${styles.input_button} ${roobertMedium.className}`}
                 >
@@ -158,21 +163,22 @@ export const FirstStepSearch: React.FC<RegisterProps> = ({ register, nextStep, c
                     <input
                         type="checkbox"
                         checked={isChecked}
-                        {...register("privateReg")}
-                        onChange={toggleCheckbox}
+              
+                        {...register("privateReg",)}
+                        onChange={handleInputChange}
                     />
                     <span className="slider"></span>
                 </label>
                 <p
                     className={`${styles.reg_vehicle} ${roobertMedium.className}`}
-                    onClick={toggleCheckbox}
+                    onClick={()=>toggleCheckbox}
                 >
                     {isChecked ? "Private Reg Vehicle?" : "Non-Private Reg Vehicle?"}
                 </p>
             </div>
-            <p className={`${styles.skip} ${roobertMedium.className}`}>
+            <a onClick={skipRegistration} className={`${styles.skip} ${roobertMedium.className}`}>
                 Skip Registration Plate
-            </p>
+            </a>
         </div>
     );
 };

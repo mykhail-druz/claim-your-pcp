@@ -50,8 +50,12 @@ export default async function handler(
      "Car Model and Registration Number": req.body.carModel,
      "Private Reg": req.body.privateReg,
    };
-
-    const response = await axios.post(url, requestBody, {
+const filteredRequestBody = Object.fromEntries(
+  Object.entries(requestBody).filter(
+    ([_, value]) => value !== undefined || value !== null || value !== ""
+  )
+);
+    const response = await axios.post(url, filteredRequestBody, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,11 +1,11 @@
 import { UseFormRegister, UseFormUnregister } from "react-hook-form";
 
 export interface IFormInput {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;
-  numberCar: string;
+  firstName: string | null;
+  lastName: string | null;
+  phoneNumber: string | null;
+  email: string | null;
+  numberCar: string | null;
   financeProvider: string;
   vehicleFinancedBetween: boolean | null;
   title: string;
@@ -30,8 +30,8 @@ export interface IFormInput {
   youLikeInvestigate: boolean | null;
   relevantProduct: string;
   vehicleData: any;
-  carModel:any;
-  privateReg:boolean;
+  carModel: any;
+  privateReg: boolean;
 }
 
 export interface RegisterProps {
@@ -39,9 +39,9 @@ export interface RegisterProps {
   unregister?: UseFormUnregister<IFormInput> | null;
   nextStep?: any;
   onSubmit?: any;
-  firstName?: string;
-  title?: string;
-  carNumber?: string;
+  firstName?: any;
+  title?: any;
+  carNumber?: any;
   control?: any;
   formState?: any;
   finalSumbit?: any;
@@ -49,4 +49,5 @@ export interface RegisterProps {
   setValue?: any;
   carModel?: any;
   reset?: any;
+  skipRegistration?:any;
 }
