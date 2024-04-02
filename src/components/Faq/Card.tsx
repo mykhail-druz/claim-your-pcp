@@ -19,8 +19,7 @@ export const Card: React.FC<CardProps> = ({ title, description }) => {
         <h3
           className={`${isOpen ? styles.title_open : styles.title_closed} ${
             roobertBold.className
-          }
-                       `}
+          }`}
         >
           {title}
         </h3>
@@ -35,7 +34,7 @@ export const Card: React.FC<CardProps> = ({ title, description }) => {
         </div>
       </div>
 
-      <p className={`${isOpen ? styles.open : styles.card_desc} `}>
+      <p className={`${isOpen ? styles.open : styles.card_desc}`}>
         {description}
       </p>
     </div>

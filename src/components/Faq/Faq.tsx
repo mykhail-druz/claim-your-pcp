@@ -10,114 +10,83 @@ export const Faq = () => {
         className={`${styles.title} ${roobertBold.className}`}
         data-aos="fade-down"
       >
-        Frequently asked <br /> questions
+        Have A Question On PCP Claims?
       </h1>
       <div>
         <Card
-          title={"What is Pcp"}
+          title={"What exactly is a PCP Car Finance Claim?"}
           description={
             <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
+              A PCP (Personal Contract Purchase) car finance claim is raised
+              when an individual believes they were not fully informed or misled
+              about their PCP agreement’s terms.
               <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
+              <br />
+              This can involve unclear information about interest rates,
+              commission structures, or the final balloon payment, potentially
+              leading to a claim for compensation.
             </span>
           }
         />
         <Card
-          title={"What is Pcp"}
+          title={"How can I tell if my PCP car finance was mis-sold to me?"}
           description={
             <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
+              If you weren’t provided with complete information about the total
+              cost of your agreement, if undisclosed high commissions influenced
+              the deal, or if terms regarding mileage limits or balloon payments
+              were not made clear, you might have been mis-sold PCP car finance.
               <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
+              <br />
+              Examining your finance agreement for undisclosed terms or
+              discrepancies is crucial in identifying mis-selling.
             </span>
           }
         />
         <Card
-          title={"What is Pcp"}
+          title={"Who qualifies to make a claim against PCP Car Finance?"}
           description={
             <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
+              Individuals who entered into a PCP agreement before 2021 without
+              full disclosure or understanding of the agreement’s implications,
+              or who were misled about the financial terms, might have grounds
+              for a claim. <br />
               <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
+              This encompasses not being informed about aspects like interest
+              rates, commission structures, or the comprehensive terms and
+              conditions of their finance agreement.
             </span>
           }
         />
         <Card
-          title={"What is Pcp"}
+          title={"What are the steps to address a mis-sold PCP claim?"}
           description={
             <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
+              Begin by reviewing your finance agreement for any undisclosed
+              terms. Compile all pertinent documentation and evidence of your
+              communications with the finance provider. <br />
               <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
+              It’s advisable to seek professional advice from a legal expert
+              specialising in PCP claims to understand your situation better and
+              to explore your options.
+              <br />
+              <br />
+              Should you decide to proceed, taking legal action to seek
+              compensation is the next step.
             </span>
           }
         />
         <Card
-          title={"What is Pcp"}
+          title={"How long does the PCP claim process take?"}
           description={
             <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
+              The duration of the PCP claim process can vary significantly
+              depending on the complexity of your case, the responsiveness of
+              your finance provider, and whether legal proceedings are
+              necessary. <br />
               <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
-            </span>
-          }
-        />
-        <Card
-          title={"What is Pcp"}
-          description={
-            <span>
-              Personal Contract Purchase (PCP) is effectively a personal loan
-              which allows drivers to spread the payments for a car over a long
-              period, typically two or three years <br />
-              <br />
-              However, unlike a normal personal loan, you won&apos;t be paying
-              off the full value of the car and you won&apos;t necessarily own
-              it at the end of the deal, unless you choose to pay the final
-              balloon payment PCP is one of the more complex financial products
-              available to help you buy a car, but it can be broken down into
-              three main parts: the deposit, the amount you borrow and the
-              balloon payment
+              Seeking our advice can provide a more precise timeline based on
+              the specifics of your situation.
             </span>
           }
         />
